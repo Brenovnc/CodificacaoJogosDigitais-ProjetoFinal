@@ -38,8 +38,26 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG - 1
+    uniqueID: 681712175
+    locked: 0
+  - name: BG - 2
+    uniqueID: 144250601
+    locked: 0
+  - name: BG - 3
+    uniqueID: 613253689
+    locked: 0
+  - name: BG - 4
+    uniqueID: 17788239
+    locked: 0
+  - name: BG - 5
+    uniqueID: 469654641
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ForeGround
+    uniqueID: 1482514495
     locked: 0
   m_RenderingLayers:
   - Default
