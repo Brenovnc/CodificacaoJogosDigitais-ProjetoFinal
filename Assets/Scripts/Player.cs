@@ -9,38 +9,72 @@ public class Player : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
 
-    Rigidbody2D rb;
+    Rigidbody2D _playerRb;
     bool isGrounded;
+    float xDir;
+    float yDir;
 
     public float JumpForce
     {
         get => jumpForce;
         set => jumpForce = value;
     }
+
+    Animator _playerAnimatorSprite;
+
+    private void Awake()
+    {
+        _playerAnimatorSprite = GetComponentInChildren<Animator>();
+    }
+
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
+        _playerRb = GetComponent<Rigidbody2D>();
+        _playerRb.freezeRotation = true;
     }
 
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        Move();
+        Jump();
     }
 
-    void Update()
+    void OnMove(InputValue inputValue)
     {
-        float moveInput = 0f;
+        xDir = inputValue.Get<Vector2>().x;
+    }
 
-        if (Keyboard.current.aKey.isPressed) moveInput -= 1f;
-        if (Keyboard.current.dKey.isPressed) moveInput += 1f;
-        
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-
-        // Pulo
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
+    void OnJump(InputValue inputValue)
+    {
+        if (isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
         }
+    }
+
+    void Move()
+    {
+        // A velocidade tem que ser alterada aqui para que possamos clicar uma única vez manter a movimentação
+        // já que o Move() é chamado no fixed update
+        _playerRb.linearVelocityX = xDir * moveSpeed;
+
+        bool IsWalking = Mathf.Abs(_playerRb.linearVelocity.x) > Mathf.Epsilon;
+        _playerAnimatorSprite.SetBool("IsWalking", IsWalking);
+
+        if (IsWalking)
+            FlipSprite();
+    }
+
+    void Jump()
+    {
+        bool IsJumping = !_playerRb.IsTouchingLayers(groundLayer);
+        _playerAnimatorSprite.SetBool("IsJumping", IsJumping);
+
+    }
+
+    void FlipSprite()
+    {
+        transform.localScale = new Vector3(x: Mathf.Sign(_playerRb.linearVelocityX), y: 1, z: 1);
     }
 }
