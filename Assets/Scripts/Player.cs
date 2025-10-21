@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         # region Gravidade - velocidade de subida e descida diferente
         if (_playerRb.linearVelocity.y > 0 && jumpPressed)
         {
-            float slowerUp = jumpForce *jumpGravity * Time.fixedDeltaTime;
+            float slowerUp = jumpForce * jumpGravity * Time.fixedDeltaTime;
             _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, _playerRb.linearVelocity.y - slowerUp);
         }
         else if (_playerRb.linearVelocity.y < 0)

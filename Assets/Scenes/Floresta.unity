@@ -2423,12 +2423,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 2
-  jumpForce: 8
+  jumpForce: 4
   groundCheck: {fileID: 1278741665}
   groundCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  fallGravity: 2
+  jumpGravity: 0.3
+  jumpStartTime: 0.2
 --- !u!114 &156740348
 MonoBehaviour:
   m_ObjectHideFlags: 0
