@@ -91,8 +91,8 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        // A velocidade tem que ser alterada aqui para que possamos clicar uma �nica vez manter a movimenta��o
-        // j� que o Move() � chamado no fixed update
+        // A velocidade tem que ser alterada aqui para que possamos clicar uma unica vez manter a movimentacao
+        // ja que o Move() e chamado no fixed update
         _playerRb.linearVelocityX = xDir * moveSpeed;
 
         bool IsWalking = Mathf.Abs(_playerRb.linearVelocity.x) > Mathf.Epsilon;
