@@ -9,6 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
 
+    #region Variaveis - Controlar a fricção do player
+    PhysicsMaterial2D noFriction;
+    PhysicsMaterial2D normalFriction;
+    BoxCollider2D _playerCollider;
+    #endregion
+
     Rigidbody2D _playerRb;
     bool isGrounded;
     float xDir;
@@ -25,6 +31,22 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _playerAnimatorSprite = GetComponentInChildren<Animator>();
+
+        #region Variaveis para controlar a fricção do player 
+        _playerCollider = GetComponent<BoxCollider2D>();
+
+        noFriction = new PhysicsMaterial2D("NoFriction")
+        {
+            friction = 0.1f,
+            bounciness = 0f
+        };
+
+        normalFriction = new PhysicsMaterial2D("NormalFriction")
+        {
+            friction = 0.4f,
+            bounciness = 0f
+        };
+        #endregion
     }
 
     void Start()
@@ -36,6 +58,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        // Ajusta material de física (escorregar nas paredes)
+        _playerCollider.sharedMaterial = isGrounded ? normalFriction : noFriction;
+
         Move();
         Jump();
     }
