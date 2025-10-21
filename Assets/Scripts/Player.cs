@@ -9,6 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
 
+    #region Variaveis - Controlar o pulo
+    bool jumpPressed;
+    [SerializeField] float jumpStartTime = 0.25f;
+    private float jumpTime;
+    private bool isJumping;
+    #endregion
+
     #region Variaveis - Controlar a fricção do player
     PhysicsMaterial2D noFriction;
     PhysicsMaterial2D normalFriction;
@@ -65,19 +72,16 @@ public class Player : MonoBehaviour
         Move();
         Jump();
     }
+    void OnJump(InputValue inputValue)
+    {
+        jumpPressed = inputValue.isPressed;
+    }
 
     void OnMove(InputValue inputValue)
     {
         xDir = inputValue.Get<Vector2>().x;
     }
 
-    void OnJump(InputValue inputValue)
-    {
-        if (isGrounded)
-        {
-            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
-        }
-    }
 
     void Move()
     {
@@ -94,9 +98,35 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        bool IsJumping = !_playerRb.IsTouchingLayers(groundLayer);
-        _playerAnimatorSprite.SetBool("IsJumping", IsJumping);
+        _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
+        #region Controle da altura do pulo com base no quanto tempo o botao e pressionado
+        if (isGrounded && jumpPressed)
+        {
+            isJumping = true;
+            jumpTime = jumpStartTime;
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
+        }
+
+        if (isJumping && jumpPressed)
+        {
+
+            if (jumpTime > 0)
+            {
+                _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
+                jumpTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+
+        if (!jumpPressed)
+        {
+            isJumping = false;
+        }
+        #endregion
     }
 
     void FlipSprite()
