@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
-
+    
+    float maxFallSpeed = -4f;
 
     #region Variaveis - Controlar a gravidade de pulo
     [SerializeField] float fallGravity = 2f; // quanto maior, mais rapida a queda
@@ -75,6 +76,9 @@ public class Player : MonoBehaviour
         // Ajusta material de física (escorregar nas paredes)
         _playerCollider.sharedMaterial = isGrounded ? normalFriction : noFriction;
 
+        if (_playerRb.linearVelocity.y < maxFallSpeed)
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, maxFallSpeed);
+            
         Move();
         Jump();
     }
