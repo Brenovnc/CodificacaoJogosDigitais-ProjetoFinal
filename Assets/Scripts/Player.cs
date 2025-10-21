@@ -3,22 +3,22 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float jumpForce = 10f;
+    float moveSpeed = 2f;
+    float jumpForce = 4f;
     [SerializeField] Transform groundCheck;
-    [SerializeField] float groundCheckRadius = 0.2f;
+    float groundCheckRadius = 0.1f;
     [SerializeField] LayerMask groundLayer;
     
     float maxFallSpeed = -4f;
 
     #region Variaveis - Controlar a gravidade de pulo
-    [SerializeField] float fallGravity = 2f; // quanto maior, mais rapida a queda
-    [SerializeField] float jumpGravity = 0.001f; // quanto menor, mais lenta a subida
+    float fallGravity = 2f; // quanto maior, mais rapida a queda
+    float jumpGravity = 0.3f; // quanto menor, mais lenta a subida
     #endregion
 
     #region Variaveis - Controlar o pulo
     bool jumpPressed;
-    [SerializeField] float jumpStartTime = 0.25f;
+    float jumpStartTime = 0.2f;
     private float jumpTime;
     private bool isJumping;
     #endregion
