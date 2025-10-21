@@ -9,6 +9,12 @@ public class Player : MonoBehaviour
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
 
+
+    #region Variaveis - Controlar a gravidade de pulo
+    [SerializeField] float fallGravity = 2f; // quanto maior, mais rapida a queda
+    [SerializeField] float jumpGravity = 0.001f; // quanto menor, mais lenta a subida
+    #endregion
+
     #region Variaveis - Controlar o pulo
     bool jumpPressed;
     [SerializeField] float jumpStartTime = 0.25f;
@@ -125,6 +131,19 @@ public class Player : MonoBehaviour
         if (!jumpPressed)
         {
             isJumping = false;
+        }
+        #endregion
+
+        # region Gravidade - velocidade de subida e descida diferente
+        if (_playerRb.linearVelocity.y > 0 && jumpPressed)
+        {
+            float slowerUp = jumpForce *jumpGravity * Time.fixedDeltaTime;
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, _playerRb.linearVelocity.y - slowerUp);
+        }
+        else if (_playerRb.linearVelocity.y < 0)
+        {
+            float fasterDown = jumpForce * fallGravity * Time.fixedDeltaTime;
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, _playerRb.linearVelocity.y - fasterDown);
         }
         #endregion
     }
