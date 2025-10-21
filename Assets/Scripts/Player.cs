@@ -55,8 +55,8 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        // A velocidade tem que ser alterada aqui para que possamos clicar uma única vez manter a movimentação
-        // já que o Move() é chamado no fixed update
+        // A velocidade tem que ser alterada aqui para que possamos clicar uma ï¿½nica vez manter a movimentaï¿½ï¿½o
+        // jï¿½ que o Move() ï¿½ chamado no fixed update
         _playerRb.linearVelocityX = xDir * moveSpeed;
 
         bool IsWalking = Mathf.Abs(_playerRb.linearVelocity.x) > Mathf.Epsilon;
@@ -75,6 +75,6 @@ public class Player : MonoBehaviour
 
     void FlipSprite()
     {
-        transform.localScale = new Vector3(x: Mathf.Sign(_playerRb.linearVelocityX), y: 1, z: 1);
+        transform.localScale = new Vector3(x: Mathf.Sign(_playerRb.linearVelocityX) * Mathf.Abs(_playerRb.transform.localScale.x), y: _playerRb.transform.localScale.y, z: _playerRb.transform.localScale.z);
     }
 }
