@@ -119,6 +119,135 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &29994918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 29994920}
+  - component: {fileID: 29994919}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &29994919
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29994918}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 2374147c8ca481f40bc0009627ad2868, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.15
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &29994920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29994918}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3581, y: -0.43399, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &30158463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,8 +1859,8 @@ Tilemap:
   - first: {x: 15, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 17
+      m_TileIndex: 17
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1830,8 +1959,8 @@ Tilemap:
   - first: {x: -20, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 17
+      m_TileIndex: 17
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1960,8 +2089,8 @@ Tilemap:
   - first: {x: 17, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 17
+      m_TileIndex: 17
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2283,7 +2412,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a3e2fcf2c98612542a30aedced609f35, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 04b7229f6ae2d8f49ad4ce48b7a8f3c9, type: 2}
-  - m_RefCount: 47
+  - m_RefCount: 44
     m_Data: {fileID: 11400000, guid: d1ddbe56bd95e7a4eb3f592ba31a5a0b, type: 2}
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: 2972b4bbe1c09f04b8f7cc0621ac68df, type: 2}
@@ -2303,7 +2432,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7415d8a83f0f5e8428c8b47b7e812020, type: 2}
-  - m_RefCount: 71
+  - m_RefCount: 74
     m_Data: {fileID: 11400000, guid: 8726b1ad8fa122442bbbaf69eeacb2b0, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -2332,7 +2461,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 71
+  - m_RefCount: 74
     m_Data: {fileID: -260555234, guid: d4ebe1c5765d43f43ba105a3f23e5e2e, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -2340,7 +2469,7 @@ Tilemap:
     m_Data: {fileID: 923619726, guid: d4ebe1c5765d43f43ba105a3f23e5e2e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1694692436, guid: d4ebe1c5765d43f43ba105a3f23e5e2e, type: 3}
-  - m_RefCount: 47
+  - m_RefCount: 44
     m_Data: {fileID: -127160918, guid: d4ebe1c5765d43f43ba105a3f23e5e2e, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 183
@@ -2422,16 +2551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d7f178a2f59f348a7410fe79a1725c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  moveSpeed: 2
-  jumpForce: 4
   groundCheck: {fileID: 1278741665}
-  groundCheckRadius: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  fallGravity: 2
-  jumpGravity: 0.3
-  jumpStartTime: 0.2
 --- !u!114 &156740348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3287,7 +3410,7 @@ Transform:
   m_GameObject: {fileID: 740101752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.90951, y: 0.24301997, z: -5}
+  m_LocalPosition: {x: 3.90951, y: -0.3, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3655,6 +3778,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1140394844}
     m_ColliderPaths:
+    - - X: 47600004
+        Y: -2550000
+      - X: 47175004
+        Y: -1912500
+      - X: 46112500
+        Y: -1487500
+      - X: 44625000
+        Y: -1487500
+      - X: 44200000
+        Y: -1912500
+      - X: 44200000
+        Y: -3400000
+      - X: 47600004
+        Y: -3400000
     - - X: 27200000
         Y: -5949999
       - X: 26775000
@@ -3666,18 +3803,37 @@ CompositeCollider2D:
       - X: 23799998
         Y: -5312500
       - X: 23799998
+        Y: -5737498
+      - X: 22525000
+        Y: -5100000
+      - X: 20825000
+        Y: -5100000
+      - X: 20400000
+        Y: -5949999
+      - X: 20400000
         Y: -6800000
       - X: 27200000
         Y: -6800000
   m_CompositePaths:
     m_Paths:
+    - - {x: 4.759971, y: -0.34}
+      - {x: 4.759996, y: -0.25499362}
+      - {x: 4.717493, y: -0.191247}
+      - {x: 4.611245, y: -0.14875}
+      - {x: 4.4624925, y: -0.1487576}
+      - {x: 4.42, y: -0.1912608}
+      - {x: 4.420029, y: -0.34}
     - - {x: 2.719971, y: -0.68}
       - {x: 2.7199957, y: -0.59499353}
       - {x: 2.6774924, y: -0.531247}
       - {x: 2.5712452, y: -0.48875}
       - {x: 2.4224923, y: -0.4887576}
       - {x: 2.3799999, y: -0.5312608}
-      - {x: 2.3800292, y: -0.68}
+      - {x: 2.3799524, y: -0.5737261}
+      - {x: 2.252494, y: -0.51}
+      - {x: 2.0824924, y: -0.5100149}
+      - {x: 2.04, y: -0.5950058}
+      - {x: 2.0400293, y: -0.68}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -3811,7 +3967,27 @@ Tilemap:
   m_GameObject: {fileID: 1140394839}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: 6, y: -2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 7, y: -2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 17
+      m_TileSpriteIndex: 17
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 13, y: -1, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 17
@@ -3855,9 +4031,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 6f15d05b6aef0694a8849db31c54ba15, type: 2}
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: f29c5091c3ea4b24c9b9ef9fe9cefd59, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -3892,12 +4068,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
+    m_Data: {fileID: 610777093, guid: d4ebe1c5765d43f43ba105a3f23e5e2e, type: 3}
+  - m_RefCount: 2
     m_Data: {fileID: 1953121728, guid: d4ebe1c5765d43f43ba105a3f23e5e2e, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1
+  - m_RefCount: 3
     m_Data:
       e00: 1
       e01: 0
@@ -3916,7 +4092,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1
+  - m_RefCount: 3
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -4762,3 +4938,4 @@ SceneRoots:
   - {fileID: 1212040535}
   - {fileID: 1887687171}
   - {fileID: 1988619249}
+  - {fileID: 29994920}
