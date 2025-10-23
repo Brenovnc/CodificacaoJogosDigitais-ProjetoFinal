@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Manguezal.unity
     guid: c49bb9e5edfae5c43a1b0babcb8243c2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Fase Manguezal.unity
     guid: c88a14178b6d46c49aa2541c5827a66e
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: e78f0cd13a04ec848bf7fa651e8131f8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
