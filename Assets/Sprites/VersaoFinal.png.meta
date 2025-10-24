@@ -1,100 +1,73 @@
 fileFormatVersion: 2
-guid: 31a8e0535c6d6f84480e8b8f1fbdbe3e
+guid: ede59e93ec0405845a0c8366d3e39d61
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4782475326069520280
-    second: Versao01-Sheet_0
+      213: 5485808613484410321
+    second: VersaoFinal_0
   - first:
-      213: 3619843889074226996
-    second: Versao01-Sheet_1
+      213: 8179984621457335639
+    second: VersaoFinal_1
   - first:
-      213: 7421805149706897894
-    second: Versao01-Sheet_2
+      213: 6010853275596310923
+    second: VersaoFinal_2
   - first:
-      213: -1543097785655374952
-    second: Versao01-Sheet_3
+      213: -1951216885751423830
+    second: VersaoFinal_3
   - first:
-      213: 8285989679548758973
-    second: Versao01-Sheet_4
+      213: -2792221895309085607
+    second: VersaoFinal_4
   - first:
-      213: -5323113366555889454
-    second: Versao01-Sheet_5
+      213: -797359460336483191
+    second: VersaoFinal_5
   - first:
-      213: -6424470007873417708
-    second: Versao01-Sheet_6
+      213: 249275956943037214
+    second: VersaoFinal_6
   - first:
-      213: -1142318846055113027
-    second: Versao01-Sheet_7
+      213: -7004959754355358551
+    second: VersaoFinal_7
   - first:
-      213: -163490743225380851
-    second: Versao01-Sheet_8
+      213: 8873021202773276225
+    second: VersaoFinal_8
   - first:
-      213: -5908620432898787395
-    second: Versao01-Sheet_9
+      213: 6347702149265205745
+    second: VersaoFinal_9
   - first:
-      213: -8593496908240029758
-    second: Versao01-Sheet_10
+      213: -5767470534026619989
+    second: VersaoFinal_10
   - first:
-      213: -7170378109951249488
-    second: Versao01-Sheet_11
+      213: -4922074047668793883
+    second: VersaoFinal_11
   - first:
-      213: 2371912008990984831
-    second: Versao01-Sheet_12
+      213: 1895831255687065433
+    second: VersaoFinal_12
   - first:
-      213: 1327369940513636714
-    second: Versao01-Sheet_13
+      213: -7781468849357116307
+    second: VersaoFinal_13
   - first:
-      213: -963613328973182694
-    second: Versao01-Sheet_14
+      213: 2512183648912887069
+    second: VersaoFinal_14
   - first:
-      213: -8856030200193019389
-    second: Versao01-Sheet_15
+      213: -7264670786566403074
+    second: VersaoFinal_15
   - first:
-      213: 4838971956849994305
-    second: Versao01-Sheet_16
+      213: 4843761337932427277
+    second: VersaoFinal_16
   - first:
-      213: -6885603027324494542
-    second: Versao01-Sheet_17
+      213: 8231113052292684345
+    second: VersaoFinal_17
   - first:
-      213: -3111154584744666060
-    second: Versao01-Sheet_18
+      213: -5285994657011441385
+    second: VersaoFinal_18
   - first:
-      213: -7214160770115994750
-    second: Versao01-Sheet_19
+      213: 1512754226822434589
+    second: VersaoFinal_19
   - first:
-      213: -8569070826504467621
-    second: Versao01-Sheet_20
+      213: -1659505008098628938
+    second: VersaoFinal_20
   - first:
-      213: 4859077642993335816
-    second: Versao01-Sheet_21
-  - first:
-      213: -835276919460846309
-    second: Versao01-Sheet_22
-  - first:
-      213: 8925410317355290632
-    second: Versao01-Sheet_23
-  - first:
-      213: 6832572521144070855
-    second: Versao01-Sheet_24
-  - first:
-      213: -7778337364611998794
-    second: Versao01-Sheet_25
-  - first:
-      213: -4819060132269563507
-    second: Versao01-Sheet_26
-  - first:
-      213: -8239147067593273509
-    second: Versao01-Sheet_27
-  - first:
-      213: -280270264658748723
-    second: Versao01-Sheet_28
-  - first:
-      213: -8129758002629288982
-    second: Versao01-Sheet_29
-  - first:
-      213: 2796730616518594010
-    second: Versao01-Sheet_30
+      213: -4619184822915536622
+    second: VersaoFinal_21
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -190,7 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Versao01-Sheet_0
+      name: VersaoFinal_0
       rect:
         serializedVersion: 2
         x: 0
@@ -205,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8684e82970c31adb0800000000000000
-      internalID: -4782475326069520280
+      spriteID: 1d534807ed1812c40800000000000000
+      internalID: 5485808613484410321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_1
+      name: VersaoFinal_1
       rect:
         serializedVersion: 2
         x: 32
@@ -227,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43743ae96d44c3230800000000000000
-      internalID: 3619843889074226996
+      spriteID: 7556f1e7ca4258170800000000000000
+      internalID: 8179984621457335639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_2
+      name: VersaoFinal_2
       rect:
         serializedVersion: 2
         x: 64
@@ -249,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e9c174167c8ff660800000000000000
-      internalID: 7421805149706897894
+      spriteID: b8949e01537da6350800000000000000
+      internalID: 6010853275596310923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_3
+      name: VersaoFinal_3
       rect:
         serializedVersion: 2
         x: 0
@@ -271,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89bc1585db0d59ae0800000000000000
-      internalID: -1543097785655374952
+      spriteID: aacda059492ebe4e0800000000000000
+      internalID: -1951216885751423830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_4
+      name: VersaoFinal_4
       rect:
         serializedVersion: 2
         x: 32
@@ -293,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbb7e0666bfbdf270800000000000000
-      internalID: 8285989679548758973
+      spriteID: 954b804eaf80049d0800000000000000
+      internalID: -2792221895309085607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_5
+      name: VersaoFinal_5
       rect:
         serializedVersion: 2
         x: 64
@@ -315,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d07d4f98908026b0800000000000000
-      internalID: -5323113366555889454
+      spriteID: 984c850abc53fe4f0800000000000000
+      internalID: -797359460336483191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_6
+      name: VersaoFinal_6
       rect:
         serializedVersion: 2
         x: 96
@@ -337,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41ecd8ee092b7d6a0800000000000000
-      internalID: -6424470007873417708
+      spriteID: e13a2a0892b957300800000000000000
+      internalID: 249275956943037214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_7
+      name: VersaoFinal_7
       rect:
         serializedVersion: 2
         x: 128
@@ -359,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbe96a0df0ba520f0800000000000000
-      internalID: -1142318846055113027
+      spriteID: 9a4cdbf973269ce90800000000000000
+      internalID: -7004959754355358551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_8
+      name: VersaoFinal_8
       rect:
         serializedVersion: 2
         x: 160
@@ -381,14 +354,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d009cf5090a2bbdf0800000000000000
-      internalID: -163490743225380851
+      spriteID: 1467fcbc5cd432b70800000000000000
+      internalID: 8873021202773276225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_9
+      name: VersaoFinal_9
       rect:
         serializedVersion: 2
         x: 0
@@ -403,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db7f370850d500ea0800000000000000
-      internalID: -5908620432898787395
+      spriteID: 1f9afe22971971850800000000000000
+      internalID: 6347702149265205745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_10
+      name: VersaoFinal_10
       rect:
         serializedVersion: 2
         x: 32
@@ -425,14 +398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c77fed9714cdb880800000000000000
-      internalID: -8593496908240029758
+      spriteID: ba39fce4b14d5ffa0800000000000000
+      internalID: -5767470534026619989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_11
+      name: VersaoFinal_11
       rect:
         serializedVersion: 2
         x: 64
@@ -447,14 +420,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b37e1b6913bd7c90800000000000000
-      internalID: -7170378109951249488
+      spriteID: 5ed488e5bb741bbb0800000000000000
+      internalID: -4922074047668793883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_12
+      name: VersaoFinal_12
       rect:
         serializedVersion: 2
         x: 96
@@ -469,14 +442,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7a046eb769bae020800000000000000
-      internalID: 2371912008990984831
+      spriteID: 95f6f458b785f4a10800000000000000
+      internalID: 1895831255687065433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_13
+      name: VersaoFinal_13
       rect:
         serializedVersion: 2
         x: 0
@@ -491,14 +464,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a61c8dd9de3cb6210800000000000000
-      internalID: 1327369940513636714
+      spriteID: d6c2d4b3f4ba20490800000000000000
+      internalID: -7781468849357116307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_14
+      name: VersaoFinal_14
       rect:
         serializedVersion: 2
         x: 32
@@ -513,14 +486,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a19c8b168ce80a2f0800000000000000
-      internalID: -963613328973182694
+      spriteID: d1d4ff3f7b11dd220800000000000000
+      internalID: 2512183648912887069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_15
+      name: VersaoFinal_15
       rect:
         serializedVersion: 2
         x: 64
@@ -535,14 +508,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3021d55447f091580800000000000000
-      internalID: -8856030200193019389
+      spriteID: efb4d84d864be2b90800000000000000
+      internalID: -7264670786566403074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_16
+      name: VersaoFinal_16
       rect:
         serializedVersion: 2
         x: 96
@@ -557,14 +530,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 14aee165b5b772340800000000000000
-      internalID: 4838971956849994305
+      spriteID: d00bb34064f783340800000000000000
+      internalID: 4843761337932427277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_17
+      name: VersaoFinal_17
       rect:
         serializedVersion: 2
         x: 128
@@ -579,14 +552,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 23d18f3378c6170a0800000000000000
-      internalID: -6885603027324494542
+      spriteID: 93a9cf3f5b9ca3270800000000000000
+      internalID: 8231113052292684345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_18
+      name: VersaoFinal_18
       rect:
         serializedVersion: 2
         x: 160
@@ -601,14 +574,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43c57f68365f2d4d0800000000000000
-      internalID: -3111154584744666060
+      spriteID: 7116838addf54a6b0800000000000000
+      internalID: -5285994657011441385
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_19
+      name: VersaoFinal_19
       rect:
         serializedVersion: 2
         x: 192
@@ -623,14 +596,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28b7da8700722eb90800000000000000
-      internalID: -7214160770115994750
+      spriteID: d1fc83254f16ef410800000000000000
+      internalID: 1512754226822434589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_20
+      name: VersaoFinal_20
       rect:
         serializedVersion: 2
         x: 224
@@ -645,14 +618,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5bc903fb7b841980800000000000000
-      internalID: -8569070826504467621
+      spriteID: 6baac41dcf048f8e0800000000000000
+      internalID: -1659505008098628938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Versao01-Sheet_21
+      name: VersaoFinal_21
       rect:
         serializedVersion: 2
         x: 256
@@ -667,206 +640,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80ef8ae2f59ee6340800000000000000
-      internalID: 4859077642993335816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_22
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b15247631108864f0800000000000000
-      internalID: -835276919460846309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_23
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8009190156d6ddb70800000000000000
-      internalID: 8925410317355290632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_24
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7c233e8e18c22de50800000000000000
-      internalID: 6832572521144070855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_25
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6bb5727d06bcd0490800000000000000
-      internalID: -7778337364611998794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_26
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8163d897524f1db0800000000000000
-      internalID: -4819060132269563507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_27
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5fc6e7156ba8ad80800000000000000
-      internalID: -8239147067593273509
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_28
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dca19e1eda74c1cf0800000000000000
-      internalID: -280270264658748723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_29
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aeb546f7b2c4d2f80800000000000000
-      internalID: -8129758002629288982
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Versao01-Sheet_30
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: addcc029dabffc620800000000000000
-      internalID: 2796730616518594010
+      spriteID: 2196e3680eb55efb0800000000000000
+      internalID: -4619184822915536622
       vertices: []
       indices: 
       edges: []
@@ -875,7 +650,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e4477547a388e5d49ae9eb3f42e7841b
+    spriteID: d9ae9ea861786a447b1e3141cdb89e9c
     internalID: 0
     vertices: []
     indices: 
@@ -887,37 +662,28 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Versao01-Sheet_0: -4782475326069520280
-      Versao01-Sheet_1: 3619843889074226996
-      Versao01-Sheet_10: -8593496908240029758
-      Versao01-Sheet_11: -7170378109951249488
-      Versao01-Sheet_12: 2371912008990984831
-      Versao01-Sheet_13: 1327369940513636714
-      Versao01-Sheet_14: -963613328973182694
-      Versao01-Sheet_15: -8856030200193019389
-      Versao01-Sheet_16: 4838971956849994305
-      Versao01-Sheet_17: -6885603027324494542
-      Versao01-Sheet_18: -3111154584744666060
-      Versao01-Sheet_19: -7214160770115994750
-      Versao01-Sheet_2: 7421805149706897894
-      Versao01-Sheet_20: -8569070826504467621
-      Versao01-Sheet_21: 4859077642993335816
-      Versao01-Sheet_22: -835276919460846309
-      Versao01-Sheet_23: 8925410317355290632
-      Versao01-Sheet_24: 6832572521144070855
-      Versao01-Sheet_25: -7778337364611998794
-      Versao01-Sheet_26: -4819060132269563507
-      Versao01-Sheet_27: -8239147067593273509
-      Versao01-Sheet_28: -280270264658748723
-      Versao01-Sheet_29: -8129758002629288982
-      Versao01-Sheet_3: -1543097785655374952
-      Versao01-Sheet_30: 2796730616518594010
-      Versao01-Sheet_4: 8285989679548758973
-      Versao01-Sheet_5: -5323113366555889454
-      Versao01-Sheet_6: -6424470007873417708
-      Versao01-Sheet_7: -1142318846055113027
-      Versao01-Sheet_8: -163490743225380851
-      Versao01-Sheet_9: -5908620432898787395
+      VersaoFinal_0: 5485808613484410321
+      VersaoFinal_1: 8179984621457335639
+      VersaoFinal_10: -5767470534026619989
+      VersaoFinal_11: -4922074047668793883
+      VersaoFinal_12: 1895831255687065433
+      VersaoFinal_13: -7781468849357116307
+      VersaoFinal_14: 2512183648912887069
+      VersaoFinal_15: -7264670786566403074
+      VersaoFinal_16: 4843761337932427277
+      VersaoFinal_17: 8231113052292684345
+      VersaoFinal_18: -5285994657011441385
+      VersaoFinal_19: 1512754226822434589
+      VersaoFinal_2: 6010853275596310923
+      VersaoFinal_20: -1659505008098628938
+      VersaoFinal_21: -4619184822915536622
+      VersaoFinal_3: -1951216885751423830
+      VersaoFinal_4: -2792221895309085607
+      VersaoFinal_5: -797359460336483191
+      VersaoFinal_6: 249275956943037214
+      VersaoFinal_7: -7004959754355358551
+      VersaoFinal_8: 8873021202773276225
+      VersaoFinal_9: 6347702149265205745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

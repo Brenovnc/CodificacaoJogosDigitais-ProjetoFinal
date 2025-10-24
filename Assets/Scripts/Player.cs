@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpStartTime = 0.2f;
     private float jumpTime;
     private bool isJumping;
+    bool jumpUsed;
     #endregion
 
     #region Variaveis - Controlar a fricção do player
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
     }
 
     Animator _playerAnimatorSprite;
+    public PauseController pauseController;
 
     private void Awake()
     {
@@ -72,6 +75,8 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        _playerAnimatorSprite.SetFloat("VelocidadeX", Mathf.Abs(_playerRb.linearVelocityX));
+        _playerAnimatorSprite.SetFloat("VelocidadeY", _playerRb.linearVelocityY);
 
         // Ajusta material de física (escorregar nas paredes)
         _playerCollider.sharedMaterial = isGrounded ? normalFriction : noFriction;
@@ -92,6 +97,11 @@ public class Player : MonoBehaviour
         xDir = inputValue.Get<Vector2>().x;
     }
 
+    void OnPause()
+    {
+        pauseController.MenuDePausa();
+    }
+
 
     void Move()
     {
@@ -100,7 +110,6 @@ public class Player : MonoBehaviour
         _playerRb.linearVelocityX = xDir * moveSpeed;
 
         bool IsWalking = Mathf.Abs(_playerRb.linearVelocity.x) > Mathf.Epsilon;
-        _playerAnimatorSprite.SetBool("IsWalking", IsWalking);
 
         if (IsWalking)
             FlipSprite();
