@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    float moveSpeed = 2f;
-    float jumpForce = 4f;
+    [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float jumpForce = 4f;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckRadius = 0.1f;
     [SerializeField] LayerMask groundLayer;
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     #region Variaveis - Controlar o pulo
     bool jumpPressed;
-    float jumpStartTime = 0.2f;
+    [SerializeField] float jumpStartTime = 0.2f;
     private float jumpTime;
     private bool isJumping;
     #endregion
