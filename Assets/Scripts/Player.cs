@@ -56,8 +56,6 @@ public class Player : MonoBehaviour
         _playerCollider = GetComponent<BoxCollider2D>();
         _playerAnimatorSprite = GetComponentInChildren<Animator>();
 
-        extraJumps = extraJumpsValue;
-
         noFriction = new PhysicsMaterial2D("NoFriction")
         {
             friction = 0f,
@@ -130,7 +128,7 @@ public class Player : MonoBehaviour
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
         if (isGrounded)
-            extraJumps = extraJumpsValue;
+            extraJumps = 0;
 
         if (jumpQueued)
         {
@@ -172,8 +170,15 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    void FlipSprite()
+    private void FlipSprite()
     {
         transform.localScale = new Vector3(x: Mathf.Sign(_playerRb.linearVelocityX) * Mathf.Abs(_playerRb.transform.localScale.x), y: _playerRb.transform.localScale.y, z: _playerRb.transform.localScale.z);
     }
+
+    public void ResetExtraJump()
+    {
+        extraJumps = extraJumpsValue;
+    }
 }
+
+

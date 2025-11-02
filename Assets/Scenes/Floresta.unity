@@ -6730,6 +6730,7 @@ GameObject:
   - component: {fileID: 640087587}
   - component: {fileID: 640087589}
   - component: {fileID: 640087588}
+  - component: {fileID: 640087590}
   m_Layer: 0
   m_Name: DJ1
   m_TagString: Untagged
@@ -6856,6 +6857,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &640087590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640087586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79b3fe435e843246b5a0e76c41d8a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpPickup
+  respawnTime: 5
 --- !u!1 &642619215
 GameObject:
   m_ObjectHideFlags: 0
