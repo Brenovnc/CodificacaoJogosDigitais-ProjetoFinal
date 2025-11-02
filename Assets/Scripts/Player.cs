@@ -4,37 +4,42 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    private Rigidbody2D _playerRb;
+    private BoxCollider2D _playerCollider;
+    Animator _playerAnimatorSprite;
+    float xDir; // Usado para obter a direção (x, y) no vector WASD e controlar a velo do player pelo onMove
+
+    private PhysicsMaterial2D noFriction;
+    private PhysicsMaterial2D normalFriction;
+
+    #region Variaveis - Pulo em contato com o chão e movimentação horizontal
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float jumpForce = 4f;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckRadius = 0.1f;
     [SerializeField] LayerMask groundLayer;
-    
-    float maxFallSpeed = -4f;
+
+    bool isGrounded;
+    #endregion
 
     #region Variaveis - Controlar a gravidade de pulo
     float fallGravity = 2f; // quanto maior, mais rapida a queda
     float jumpGravity = 0.3f; // quanto menor, mais lenta a subida
+    float maxFallSpeed = -6f;
     #endregion
 
     #region Variaveis - Controlar o pulo
-    bool jumpPressed;
-    [SerializeField] float jumpStartTime = 0.2f;
-    private float jumpTime;
+    bool jumpQueued; // Ao dar o pulo isso aqui fica zerado     
+    bool jumpPressed; // Usado para controlar altura do pulo segurando
+    [SerializeField] float jumpTimeValue = 0.2f; // tempo base para resetar o jumpTimeCurrent ao tocar o chão
+    private float jumpTimeCurrent; // Tempo máximo que o player pode segurar o pulo
     private bool isJumping;
-    bool jumpUsed;
-    #endregion
 
-    #region Variaveis - Controlar a fricção do player
-    PhysicsMaterial2D noFriction;
-    PhysicsMaterial2D normalFriction;
-    BoxCollider2D _playerCollider;
-    #endregion
+    // Double jump
+    private int extraJumpsValue = 1;
+    private int extraJumps;
 
-    Rigidbody2D _playerRb;
-    bool isGrounded;
-    float xDir;
-    float yDir;
+    #endregion
 
     public float JumpForce
     {
@@ -42,19 +47,20 @@ public class Player : MonoBehaviour
         set => jumpForce = value;
     }
 
-    Animator _playerAnimatorSprite;
+    // Referência para o script do menu de pausa
     public PauseController pauseController;
 
-    private void Awake()
+    void Awake()
     {
+        _playerRb = GetComponent<Rigidbody2D>();
+        _playerCollider = GetComponent<BoxCollider2D>();
         _playerAnimatorSprite = GetComponentInChildren<Animator>();
 
-        #region Variaveis para controlar a fricção do player 
-        _playerCollider = GetComponent<BoxCollider2D>();
+        extraJumps = extraJumpsValue;
 
         noFriction = new PhysicsMaterial2D("NoFriction")
         {
-            friction = 0.1f,
+            friction = 0f,
             bounciness = 0f
         };
 
@@ -63,33 +69,34 @@ public class Player : MonoBehaviour
             friction = 0.4f,
             bounciness = 0f
         };
-        #endregion
-    }
-
-    void Start()
-    {
-        _playerRb = GetComponent<Rigidbody2D>();
-        _playerRb.freezeRotation = true;
     }
 
     void FixedUpdate()
     {
+        // Checa se o player o groundCkeck está em até groundCheckRadius de distância do groundLayer
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+        // Seta valores para as variáveis VelocidadeX e VelocidadeY para controle das animações
         _playerAnimatorSprite.SetFloat("VelocidadeX", Mathf.Abs(_playerRb.linearVelocityX));
         _playerAnimatorSprite.SetFloat("VelocidadeY", _playerRb.linearVelocityY);
 
-        // Ajusta material de física (escorregar nas paredes)
-        _playerCollider.sharedMaterial = isGrounded ? normalFriction : noFriction;
+        // Ajusta material para o player escorregar nas paredes
+        _playerCollider.sharedMaterial = noFriction;
 
+        // Reseta a velocidade do personagem para maxFallSpeed caso ultrapasse esse valor
         if (_playerRb.linearVelocity.y < maxFallSpeed)
             _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, maxFallSpeed);
             
-        Move();
-        Jump();
+        Move(); // Aplica velocidade com base no moveSpeed, vê se o player ta andando e chama o flipSprite
+        Jump(); 
     }
     void OnJump(InputValue inputValue)
     {
+        // Enquanto eu estiver segurando o botão de espaço a variável fica True
+        // Seto uma variável para controlar a altura do pulo
+        // e outra para determinar apenas um pulo por clique
         jumpPressed = inputValue.isPressed;
+        jumpQueued = inputValue.isPressed;
     }
 
     void OnMove(InputValue inputValue)
@@ -99,16 +106,18 @@ public class Player : MonoBehaviour
 
     void OnPause()
     {
+        // A função só pode ser chamada caso o esc (vinculado ao Pause) seja apertado
+        // Como o input está vinculado ao player, precisamos chamar o onPause no player
         pauseController.MenuDePausa();
     }
 
-
     void Move()
     {
-        // A velocidade tem que ser alterada aqui para que possamos clicar uma unica vez manter a movimentacao
-        // ja que o Move() e chamado no fixed update
+        // Define a velocidade do player com base na direção do movimento (esquerda ou direita) e o moveSpeed
         _playerRb.linearVelocityX = xDir * moveSpeed;
 
+        // Math.Epsilon é a menor representação possível de um valor que não seja zero que o float pode representar
+        // Aqui eu vejo se o player está andando, independente do lado
         bool IsWalking = Mathf.Abs(_playerRb.linearVelocity.x) > Mathf.Epsilon;
 
         if (IsWalking)
@@ -117,23 +126,37 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        // Transiciona entre as blend tree Movimento e Pulando
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
-        #region Controle da altura do pulo com base no quanto tempo o botao e pressionado
-        if (isGrounded && jumpPressed)
+        if (isGrounded)
+            extraJumps = extraJumpsValue;
+
+        if (jumpQueued)
         {
-            isJumping = true;
-            jumpTime = jumpStartTime;
-            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
+            bool canJump = isGrounded || extraJumps > 0;
+
+            if (canJump)
+            {
+                // Se não estiver no chão, consome um pulo extra
+                if (!isGrounded)
+                    extraJumps--;
+
+                isJumping = true;
+                jumpTimeCurrent = jumpTimeValue;
+                _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
+            }
+
+            jumpQueued = false; // consome o clique
         }
 
-        if (isJumping && jumpPressed)
+        if (isJumping)
         {
-
-            if (jumpTime > 0)
+            if (jumpPressed && jumpTimeCurrent > 0)
             {
+                // mantém impulso enquanto o botão é segurado
                 _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, jumpForce);
-                jumpTime -= Time.fixedDeltaTime;
+                jumpTimeCurrent -= Time.fixedDeltaTime;
             }
             else
             {
@@ -141,23 +164,11 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (!jumpPressed)
-        {
-            isJumping = false;
-        }
-        #endregion
-
         # region Gravidade - velocidade de subida e descida diferente
         if (_playerRb.linearVelocity.y > 0 && jumpPressed)
-        {
-            float slowerUp = jumpForce * jumpGravity * Time.fixedDeltaTime;
-            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, _playerRb.linearVelocity.y - slowerUp);
-        }
+            _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
         else if (_playerRb.linearVelocity.y < 0)
-        {
-            float fasterDown = jumpForce * fallGravity * Time.fixedDeltaTime;
-            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, _playerRb.linearVelocity.y - fasterDown);
-        }
+            _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
         #endregion
     }
 
