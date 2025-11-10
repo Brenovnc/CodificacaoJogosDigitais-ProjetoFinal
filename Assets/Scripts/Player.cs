@@ -41,6 +41,22 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Variaveis - Controlar o WallJump
+    [SerializeField] Transform wallCheck;
+    [SerializeField] float wallCheckDistance = 0.2f;
+    [SerializeField] LayerMask wallLayer;
+
+    bool isOnWall;
+    bool isWallSliding;
+    bool wallJumping;
+    [SerializeField] float wallJumpTime = 0.15f; // tempo de "travamento"
+
+
+    [SerializeField] float wallJumpForce = 6f;
+    [SerializeField] float wallJumpHorizontal = 4f;
+
+    #endregion
+
     public float JumpForce
     {
         get => jumpForce;
@@ -54,7 +70,8 @@ public class Player : MonoBehaviour
     {
         _playerRb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
-        _playerAnimatorSprite = GetComponentInChildren<Animator>();
+        _playerAnimatorSprite = GetComponent<Animator>();
+
 
         noFriction = new PhysicsMaterial2D("NoFriction")
         {
@@ -73,6 +90,8 @@ public class Player : MonoBehaviour
     {
         // Checa se o player o groundCkeck está em até groundCheckRadius de distância do groundLayer
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        isOnWall = Physics2D.Raycast(wallCheck.position, Vector2.right * Mathf.Sign(transform.localScale.x), wallCheckDistance, wallLayer);
+
 
         // Seta valores para as variáveis VelocidadeX e VelocidadeY para controle das animações
         _playerAnimatorSprite.SetFloat("VelocidadeX", Mathf.Abs(_playerRb.linearVelocityX));
@@ -84,9 +103,10 @@ public class Player : MonoBehaviour
         // Reseta a velocidade do personagem para maxFallSpeed caso ultrapasse esse valor
         if (_playerRb.linearVelocity.y < maxFallSpeed)
             _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, maxFallSpeed);
-            
+
         Move(); // Aplica velocidade com base no moveSpeed, vê se o player ta andando e chama o flipSprite
-        Jump(); 
+        Jump();
+        HandleWallSlide();
     }
     void OnJump(InputValue inputValue)
     {
@@ -112,7 +132,8 @@ public class Player : MonoBehaviour
     void Move()
     {
         // Define a velocidade do player com base na direção do movimento (esquerda ou direita) e o moveSpeed
-        _playerRb.linearVelocityX = xDir * moveSpeed;
+        if (!wallJumping)
+            _playerRb.linearVelocityX = xDir * moveSpeed;
 
         // Math.Epsilon é a menor representação possível de um valor que não seja zero que o float pode representar
         // Aqui eu vejo se o player está andando, independente do lado
@@ -132,6 +153,30 @@ public class Player : MonoBehaviour
 
         if (jumpQueued)
         {
+
+            if (isWallSliding)
+            {
+                wallJumping = true;
+                isJumping = true;
+                jumpTimeCurrent = jumpTimeValue;
+
+                // Impulso para longe da parede
+                float direction = -Mathf.Sign(transform.localScale.x);
+                _playerRb.linearVelocity = new Vector2(direction * wallJumpHorizontal, wallJumpForce);
+
+                FlipSpriteInstant(direction);
+
+                // Cancela a detecção e o estado de slide imediatamente
+                isWallSliding = false;
+
+                jumpQueued = false;
+
+                // Bloqueia o movimento horizontal por um curto tempo para evitar "voltar para a parede"
+                Invoke(nameof(StopWallJump), wallJumpTime);
+
+                return;
+            }
+
             bool canJump = isGrounded || extraJumps > 0;
 
             if (canJump)
@@ -179,6 +224,32 @@ public class Player : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
     }
-}
 
+    void HandleWallSlide()
+    {
+        if (wallJumping)
+        {
+            isWallSliding = false;
+            return;
+        }
+
+        if (isOnWall && !isGrounded && _playerRb.linearVelocity.y < 0)
+        {
+            isWallSliding = true;
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, Mathf.Clamp(_playerRb.linearVelocity.y, -2f, float.MaxValue));
+        }
+
+        //_playerAnimatorSprite.SetBool("IsWallSliding", isWallSliding);
+    }
+
+    void FlipSpriteInstant(float direction)
+    {
+        transform.localScale = new Vector3(direction * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+    }
+
+    void StopWallJump()
+    {
+        wallJumping = false;
+    }
+}
 
