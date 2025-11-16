@@ -25,7 +25,7 @@ public class PlataformaMovel : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, pontos[i].position, speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -33,13 +33,12 @@ public class PlataformaMovel : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             collision.transform.SetParent(null);
         }
     }
-
 }
 

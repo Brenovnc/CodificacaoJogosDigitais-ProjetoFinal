@@ -7,6 +7,8 @@ namespace UI
     public class PauseController : MonoBehaviour
 {
     [SerializeField] GameObject container;
+    [SerializeField] Transform checkpoint;
+    [SerializeField] Transform player;
 
     public void MenuDePausa()
     {
@@ -25,6 +27,13 @@ namespace UI
         Time.timeScale = 1;
         SceneManager.LoadScene("MenuPrincipal");
     }
+
+    public void VoltarUltimoCheckpoint()
+    {
+        player.position = checkpoint.position;
+        VoltarAoJogo();
+    }
+
 }
 
 }
