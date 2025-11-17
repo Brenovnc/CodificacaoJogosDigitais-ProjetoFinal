@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e22754b90bcc2004e81ef20654f9f3a3
+guid: 43489d85b47fa114c901325e080e2335
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6947970334128897341
-    second: FundoQuartoPronto_0
+      213: -9085639935194705519
+    second: FundoQuartoFinalEsticado_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FundoQuartoPronto_0
+      name: FundoQuartoFinalEsticado_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 496
+        width: 720
         height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3d74bbf4362c6060800000000000000
-      internalID: 6947970334128897341
+      spriteID: 191dd91ed9259e180800000000000000
+      internalID: -9085639935194705519
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      FundoQuartoPronto_0: 6947970334128897341
+      FundoQuartoFinalEsticado_0: -9085639935194705519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

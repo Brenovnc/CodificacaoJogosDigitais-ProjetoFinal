@@ -16,14 +16,13 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float jumpForce = 4f;
     [SerializeField] Transform groundCheck;
-    [SerializeField] float groundCheckRadius = 0.1f;
+    [SerializeField] float groundCheckRadius = 0.18f;
     [SerializeField] LayerMask groundLayer;
 
     bool isGrounded;
     #endregion
 
     #region Variaveis - Controlar a gravidade de pulo
-    float fallGravity = 2f; // quanto maior, mais rapida a queda
     float jumpGravity = 0.3f; // quanto menor, mais lenta a subida
     float maxFallSpeed = -6f;
     #endregion
@@ -34,6 +33,7 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpTimeValue = 0.2f; // tempo base para resetar o jumpTimeCurrent ao tocar o chão
     private float jumpTimeCurrent; // Tempo máximo que o player pode segurar o pulo
     private bool isJumping;
+    private bool isFalling;
 
     // Double jump
     private int extraJumpsValue = 1;
@@ -107,6 +107,10 @@ public class Player : MonoBehaviour
         // Seta valores para as variáveis VelocidadeX e VelocidadeY para controle das animações
         _playerAnimatorSprite.SetFloat("VelocidadeX", Mathf.Abs(_playerRb.linearVelocityX));
         _playerAnimatorSprite.SetFloat("VelocidadeY", _playerRb.linearVelocityY);
+        _playerAnimatorSprite.SetBool("IsSliding", isWallSliding);
+        _playerAnimatorSprite.SetBool("IsJumping", isJumping);
+        _playerAnimatorSprite.SetBool("IsFalling", isFalling);
+
 
         // Ajusta material para o player escorregar nas paredes
         _playerCollider.sharedMaterial = noFriction;
@@ -139,6 +143,11 @@ public class Player : MonoBehaviour
         // A função só pode ser chamada caso o esc (vinculado ao Pause) seja apertado
         // Como o input está vinculado ao player, precisamos chamar o onPause no player
         pauseController.MenuDePausa();
+    }
+
+    void OnInteract(InputValue inputValue)
+    {
+        print("o");
     }
 
     void Move()
@@ -176,6 +185,9 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
+        if (_playerRb.linearVelocity.y < 0)
+            isJumping = false;
+
         // Transiciona entre as blend tree Movimento e Pulando
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
@@ -199,6 +211,7 @@ public class Player : MonoBehaviour
 
                 // Cancela a detecção e o estado de slide imediatamente
                 isWallSliding = false;
+                _playerAnimatorSprite.SetBool("IsSliding", false);
 
                 jumpQueued = false;
 
@@ -263,19 +276,30 @@ public class Player : MonoBehaviour
 
     void HandleWallSlide()
     {
+        bool pushingTowardsWall =
+        (xDir > 0 && Mathf.Sign(transform.localScale.x) > 0 && isOnWall) ||
+        (xDir < 0 && Mathf.Sign(transform.localScale.x) < 0 && isOnWall);
+
+
+
         if (wallJumping)
         {
             isWallSliding = false;
             return;
         }
 
-        if (isOnWall && !isGrounded && _playerRb.linearVelocity.y < 0)
+        if (isOnWall && !isGrounded && _playerRb.linearVelocity.y < 0 && pushingTowardsWall)
         {
             isWallSliding = true;
             _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, Mathf.Clamp(_playerRb.linearVelocity.y, -2f, float.MaxValue));
         }
 
-        //_playerAnimatorSprite.SetBool("IsWallSliding", isWallSliding);
+        else
+        {
+            isWallSliding = false;
+        }
+
+        _playerAnimatorSprite.SetBool("IsSliding", isWallSliding);
     }
 
     void FlipSpriteInstant(float direction)
@@ -287,7 +311,6 @@ public class Player : MonoBehaviour
     {
         wallJumping = false;
     }
-
 
     void ApplyWindControl()
     {
