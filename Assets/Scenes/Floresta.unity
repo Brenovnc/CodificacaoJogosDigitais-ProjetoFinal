@@ -6106,6 +6106,7 @@ GameObject:
   - component: {fileID: 156740349}
   - component: {fileID: 156740348}
   - component: {fileID: 156740347}
+  - component: {fileID: 156740354}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -6148,7 +6149,7 @@ MonoBehaviour:
   grappleLength: 5
   grappleLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4096
   vine: {fileID: 1152754982}
   pauseController: {fileID: 771543011}
 --- !u!114 &156740348
