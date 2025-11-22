@@ -166,7 +166,6 @@ public class Player : MonoBehaviour
         // ----- SOLTAR (ESPAÇO) -----
         if (kb.spaceKey.isPressed)
         {
-            extraJumps = extraJumpsValue; // Reseta os pulos extras ao soltar o cipó
             joint.enabled = false;
             vine.enabled = false;
         }
