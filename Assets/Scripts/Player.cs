@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
     #region Variaveis - Cipó
     [Header("Cipó")]
-    [SerializeField] private float grappleLength = 5f;
+    [SerializeField] private float grappleLength = 1f;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private LineRenderer vine;
 
@@ -148,8 +148,8 @@ public class Player : MonoBehaviour
             {
                 //grapplePoint = hit.point;
                 joint.connectedAnchor = hit.point;
-                joint.distance = Vector2.Distance(transform.position, hit.point); // Distancia variavel
-                //joint.distance = grappleLength; // Distancia fixa
+                //joint.distance = Vector2.Distance(transform.position, hit.point); // Distancia variavel
+                joint.distance = grappleLength; // Distancia fixa
                 joint.enabled = true;
                 vine.SetPosition(0, hit.point);
                 vine.SetPosition(1, transform.position);
