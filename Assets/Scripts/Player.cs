@@ -1,6 +1,7 @@
 using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
 
     #region Variaveis - Cipó
     [Header("Cipó")]
+    string sceneName;
     [SerializeField] private float grappleLength = 10f;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private LineRenderer vine;
@@ -91,10 +93,14 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        sceneName = SceneManager.GetActiveScene().name;
         #region Cipó
-        joint = GetComponent<DistanceJoint2D>();
-        joint.enabled = false;
-        vine.enabled = false;
+        if(sceneName == "Floresta")
+        {
+            joint = GetComponent<DistanceJoint2D>();
+            joint.enabled = false;
+            vine.enabled = false;
+        }
         #endregion
 
         _playerRb = GetComponent<Rigidbody2D>();
@@ -118,62 +124,64 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         #region Cipó - lança e solta
-
-        var kb = Keyboard.current;
-
-        // ----- DIREÇÃO (WASD) -----
-        float x = 0f;
-        float y = 0f;
-
-        if (kb.aKey.isPressed) x = -1;
-        if (kb.dKey.isPressed) x = 1;
-        if (kb.wKey.isPressed) y = 1;
-        if (kb.sKey.isPressed) y = -1;
-
-        moveDir = new Vector2(x, y).normalized;
-
-        // ----- LANÇAR (ENTER) -----
-        if (kb.enterKey.isPressed)
+        if (sceneName == "Floresta")
         {
-            RaycastHit2D hit = Physics2D.Raycast(
-                transform.position,
-                moveDir,
-                grappleLength,
-                grappleLayer
-            );
+            var kb = Keyboard.current;
 
-            Debug.DrawRay(transform.position, moveDir * 3f, Color.red);
+            // ----- DIREÇÃO (WASD) -----
+            float x = 0f;
+            float y = 0f;
 
-            if (hit.collider != null)
+            if (kb.aKey.isPressed) x = -1;
+            if (kb.dKey.isPressed) x = 1;
+            if (kb.wKey.isPressed) y = 1;
+            if (kb.sKey.isPressed) y = -1;
+
+            moveDir = new Vector2(x, y).normalized;
+
+            // ----- LANÇAR (ENTER) -----
+            if (kb.enterKey.isPressed)
             {
-       
-                print("Cipó conectado em: ");
-                grapplePoint = hit.point;
-                joint.connectedAnchor = hit.point;
-                //joint.distance = Vector2.Distance(transform.position, hit.point); // Distancia variavel
-                joint.distance = 2; // Distancia fixa
-                joint.enabled = true;
-                vine.SetPosition(0, hit.point);
-                vine.SetPosition(1, transform.position);
-                vine.enabled = true;
+                RaycastHit2D hit = Physics2D.Raycast(
+                    transform.position,
+                    moveDir,
+                    grappleLength,
+                    grappleLayer
+                );
+
+                Debug.DrawRay(transform.position, moveDir * 3f, Color.red);
+
+                if (hit.collider != null)
+                {
+
+                    print("Cipó conectado em: ");
+                    grapplePoint = hit.point;
+                    joint.connectedAnchor = hit.point;
+                    //joint.distance = Vector2.Distance(transform.position, hit.point); // Distancia variavel
+                    joint.distance = 2; // Distancia fixa
+                    joint.enabled = true;
+                    vine.SetPosition(0, hit.point);
+                    vine.SetPosition(1, transform.position);
+                    vine.enabled = true;
+                }
+                //else
+                //{
+                //    Debug.DrawRay(transform.position, moveDir * 20f, Color.blue);
+                //}
             }
-            //else
-            //{
-            //    Debug.DrawRay(transform.position, moveDir * 20f, Color.blue);
-            //}
-        }
 
-        // ----- SOLTAR (ESPAÇO) -----
-        if (kb.spaceKey.isPressed)
-        {
-            joint.enabled = false;
-            vine.enabled = false;
-        }
+            // ----- SOLTAR (ESPAÇO) -----
+            if (kb.spaceKey.isPressed)
+            {
+                joint.enabled = false;
+                vine.enabled = false;
+            }
 
-        if (vine.enabled)
-        {
-            //vine.enabled = true;
-            vine.SetPosition(1, transform.position);
+            if (vine.enabled)
+            {
+                //vine.enabled = true;
+                vine.SetPosition(1, transform.position);
+            }
         }
         #endregion
 
