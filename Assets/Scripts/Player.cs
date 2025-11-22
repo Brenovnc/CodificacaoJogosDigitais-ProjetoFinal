@@ -71,13 +71,13 @@ public class Player : MonoBehaviour
 
     #region Variaveis - Cipó
     [Header("Cipó")]
-    [SerializeField] private float grappleLength = 1f;
+    [SerializeField] private float grappleLength = 10f;
     [SerializeField] private LayerMask grappleLayer;
     [SerializeField] private LineRenderer vine;
 
     private DistanceJoint2D joint;
     private Vector2 moveDir;
-    //private Vector3 grapplePoint;
+    private Vector3 grapplePoint;
     #endregion
 
     public float JumpForce
@@ -146,10 +146,12 @@ public class Player : MonoBehaviour
 
             if (hit.collider != null)
             {
-                //grapplePoint = hit.point;
+       
+                print("Cipó conectado em: ");
+                grapplePoint = hit.point;
                 joint.connectedAnchor = hit.point;
                 //joint.distance = Vector2.Distance(transform.position, hit.point); // Distancia variavel
-                joint.distance = grappleLength; // Distancia fixa
+                joint.distance = 2; // Distancia fixa
                 joint.enabled = true;
                 vine.SetPosition(0, hit.point);
                 vine.SetPosition(1, transform.position);
@@ -164,6 +166,7 @@ public class Player : MonoBehaviour
         // ----- SOLTAR (ESPAÇO) -----
         if (kb.spaceKey.isPressed)
         {
+            extraJumps = extraJumpsValue; // Reseta os pulos extras ao soltar o cipó
             joint.enabled = false;
             vine.enabled = false;
         }
