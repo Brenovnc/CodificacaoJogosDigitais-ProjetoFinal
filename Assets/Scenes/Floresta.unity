@@ -6103,10 +6103,11 @@ GameObject:
   - component: {fileID: 156740352}
   - component: {fileID: 156740351}
   - component: {fileID: 156740350}
+  - component: {fileID: 156740354}
   - component: {fileID: 156740349}
   - component: {fileID: 156740348}
   - component: {fileID: 156740347}
-  - component: {fileID: 156740354}
+  - component: {fileID: 156740355}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -6146,11 +6147,6 @@ MonoBehaviour:
   windGravity: 0.6
   windLiftForce: 13
   windMaxUpVelocity: 10
-  grappleLength: 5
-  grappleLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  vine: {fileID: 1152754982}
   pauseController: {fileID: 771543011}
 --- !u!114 &156740348
 MonoBehaviour:
@@ -6373,6 +6369,25 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 2
   m_MaxDistanceOnly: 1
+--- !u!114 &156740355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156740346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ceed231584278646be681c3d22c585c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrappleVine
+  grappleLength: 5
+  grappleLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  vine: {fileID: 1152754982}
+  swingForce: 10
+  playerDrag: 0.5
 --- !u!1 &174778761
 GameObject:
   m_ObjectHideFlags: 0
@@ -11864,6 +11879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1826713905}
+  - component: {fileID: 1826713907}
   - component: {fileID: 1826713906}
   m_Layer: 11
   m_Name: DefaultCheckpoint
@@ -11933,6 +11949,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0133176, y: 0.27197552}
   m_EdgeRadius: 0
+--- !u!114 &1826713907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826713904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f69f0901f502d241bb013900709ad03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Checkpoints
+  checkpoint: {fileID: 1826713905}
 --- !u!1 &1887687169
 GameObject:
   m_ObjectHideFlags: 0
