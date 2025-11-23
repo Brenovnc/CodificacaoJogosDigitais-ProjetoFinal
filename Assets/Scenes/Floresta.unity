@@ -6386,8 +6386,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   vine: {fileID: 1152754982}
-  swingForce: 10
-  playerDrag: 0.5
+  swingForce: 700
+  playerDrag: 1
 --- !u!1 &174778761
 GameObject:
   m_ObjectHideFlags: 0

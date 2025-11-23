@@ -27,6 +27,7 @@ public class GrappleVine : MonoBehaviour
     void Awake()
     {
         sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        Application.targetFrameRate = 60;
 
         // --- Inicializa Componentes ---
         joint = GetComponent<DistanceJoint2D>();
@@ -103,7 +104,7 @@ public class GrappleVine : MonoBehaviour
         Vector2 force = swingDirection * horizontalInput * swingForce;
 
         // Aplica a força no Rigidbody para influenciar o pêndulo
-        rb.AddForce(force, ForceMode2D.Force);
+        rb.AddForce(force * Time.deltaTime, ForceMode2D.Force);
     }
 
     // ------------------------------------
