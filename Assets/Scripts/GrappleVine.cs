@@ -43,8 +43,6 @@ public class GrappleVine : MonoBehaviour
 
     void Update()
     {
-        if (sceneName != "Floresta")
-            return;
 
         var kb = Keyboard.current;
 
