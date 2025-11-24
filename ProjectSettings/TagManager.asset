@@ -55,6 +55,9 @@ TagManager:
   - name: BG - 5
     uniqueID: 469654641
     locked: 0
+  - name: Wind
+    uniqueID: 3672541873
+    locked: 0
   - name: GroundDetails
     uniqueID: 1837721253
     locked: 0
