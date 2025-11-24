@@ -3,14 +3,14 @@ using System.Collections;
 
 public class DoubleJumpPickup : MonoBehaviour
 {
-    [SerializeField] float respawnTime = 5f; // tempo pra reaparecer
+    float respawnTime = 2f; // tempo pra reaparecer
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();
         if (player != null)
         {
-            player.ResetExtraJump(); // dá o pulo duplo
+            player.ResetExtraJump(); // dï¿½ o pulo duplo
             StartCoroutine(RespawnRoutine());
         }
     }

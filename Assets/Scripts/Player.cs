@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
 
     // Double jump
     private int extraJumpsValue = 1;
-    private int extraJumps;
+    public int extraJumps;
 
     #endregion
 
@@ -198,8 +198,8 @@ public class Player : MonoBehaviour
         // Transiciona entre as blend tree Movimento e Pulando
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
-        if (isGrounded)
-            extraJumps = 0;
+        // if(isGrounded)
+        //     extraJumps = 0;
 
         if (jumpQueued)
         {

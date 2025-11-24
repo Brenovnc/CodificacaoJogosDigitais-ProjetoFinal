@@ -1534,6 +1534,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpTimeValue: 0.2
+  extraJumps: 0
   wallCheck: {fileID: 1949826352}
   wallCheckDistance: 0.2
   wallLayer:
@@ -1739,7 +1740,7 @@ Transform:
   m_GameObject: {fileID: 156740346}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.11, y: -0.63, z: 0}
+  m_LocalPosition: {x: -6.11, y: -0.696, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2293,7 +2294,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 469654641
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f0843ee5a7b724a4b97c622dfe085887, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2550,7 +2551,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 469654641
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -6458554598620568324, guid: 6a47d7cbe4c85044988f912245d0b31e, type: 3}
   m_Color: {r: 1, g: 0.84930116, b: 0.4764151, a: 1}
@@ -2572,11 +2573,11 @@ Transform:
   m_GameObject: {fileID: 749970553}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.393893, y: -1.0033, z: 0}
+  m_LocalPosition: {x: 9.973183, y: -0.37914997, z: 0}
   m_LocalScale: {x: 1.9867, y: 1.9867, z: 1.9867}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 976020537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &749970556
 BoxCollider2D:
@@ -2675,12 +2676,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Texto gen\xE9rico pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico
-    pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico
-    pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico
-    pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico
-    pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico pra testarTexto gen\xE9rico
-    pra testarTexto gen\xE9rico pra testar"
+  m_text: "Caro Jos\xE9,\n\nAs pesquisas que fizemos durante esses meses renderam
+    a mim uma localiza\xE7\xE3o. Uma maldita localiza-\xE7\xE3o. \n\nOs ind\xEDcios
+    apontam que o vegetal de grande capacidade reprodutiva se encontra na faixa de
+    transi\xE7\xE3o entre as florestas amaz\xF4nicas e o pantanal. Ele se esconde
+    intocado em um conjunto rochoso debaixo da superf\xEDcie. \n\nS\xE3o registros
+    antigos Z\xE9... Eu n\xE3o levaria t\xE3o a s\xE9rio, mas te conhe-\xE7o, sei
+    que n\xE3o posso esconder essas coisas de voc\xEA. De qualquer forma, tome cuidado!\n\n       
+    Tenha cuidado mesmo, Paulo."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2689,8 +2692,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4281283144
+  m_fontColor: {r: 0.2830189, g: 0.19489503, b: 0.18556428, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2707,10 +2710,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26.9
+  m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -2778,6 +2781,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000017166, y: 40}
   m_SizeDelta: {x: 488.3395, y: 701.5152}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &976020536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976020537}
+  m_Layer: 0
+  m_Name: Interactabels
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976020537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976020536}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.57929, y: -0.62415, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 749970555}
+  - {fileID: 1507718656}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1082449532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +2975,7 @@ Transform:
   m_GameObject: {fileID: 1099391410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.14, y: 0.77, z: 0}
+  m_LocalPosition: {x: -6.14, y: -0.717, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3022,7 +3058,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 469654641
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7ea3ff878805edb4eb804f96d98f74a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3604,7 +3640,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 613253689
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c6f1ff94903339e48befa4f73eae24bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3998,8 +4034,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507718655}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63618, y: -0.36149, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.21547, y: 0.26265997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4008,7 +4044,7 @@ Transform:
   - {fileID: 1184263245}
   - {fileID: 2008518320}
   - {fileID: 576045688}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 976020537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1507718657
 MonoBehaviour:
@@ -4025,19 +4061,22 @@ MonoBehaviour:
   dialoguePanel: {fileID: 1455337747}
   dialogueText: {fileID: 1082449534}
   dialogue:
-  - "Ol\xE1!"
-  - "Esse \xE9 um teste para ver se esse bagulho realmente funciona! Estou testando
-    de verdade!"
-  - "Ser\xE1 que funciona?"
-  - Texto4
-  - Texto5
+  - "Aten\xE7\xE3o telespectadores!"
+  - "A TV Mundo anuncia, em primeira m\xE3o, que os n\xEDveis de destrui\xE7\xE3o
+    ambiental atingem recorde nacional!"
+  - "Entidades de pesquisa chegam a estatistica final de que o pa\xEDs perdeu 82%
+    de toda sua cobertura vegetal nativa! Segundo eles, esses n\xFAmeros s\xE3o irrevers\xEDveis!
+    E as not\xEDcias n\xE3o param por ai."
+  - "Agora mesmo estamos acompanhando por imagens mais uma grande queimada na regi\xE3o
+    do Pantanal."
+  - "Isso \xE9 um sinal mais do que vermelho. Estamos caminhando para um fim tr\xE1gico!"
   wordSpeed: 0.06
   tvFrames:
-  - {fileID: 2090350955}
   - {fileID: 1884429164}
   - {fileID: 1184263244}
   - {fileID: 2008518319}
   - {fileID: 576045687}
+  - {fileID: 2090350955}
 --- !u!61 &1507718659
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4396,7 +4435,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 17788239
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 43489d85b47fa114c901325e080e2335, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4486,7 +4525,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 469654641
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1e627c4997d15546b9ea9c8703f9a4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4835,7 +4874,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 469654641
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 03b7e4f2eb62d264686421173100333c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4876,7 +4915,7 @@ Transform:
   m_GameObject: {fileID: 2029119929}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.6097703, y: 0.09462005, z: -10}
+  m_LocalPosition: {x: -5.6097703, y: 0.028620064, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5053,7 +5092,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 469654641
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dc7cbc52fe0c0174d80bf9888b2caa92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5073,11 +5112,10 @@ SceneRoots:
   - {fileID: 1406399849}
   - {fileID: 1099391411}
   - {fileID: 156740353}
+  - {fileID: 174778763}
   - {fileID: 225458721}
   - {fileID: 654395778}
   - {fileID: 1887687171}
+  - {fileID: 976020537}
   - {fileID: 29994920}
   - {fileID: 68425960}
-  - {fileID: 1507718656}
-  - {fileID: 749970555}
-  - {fileID: 174778763}
