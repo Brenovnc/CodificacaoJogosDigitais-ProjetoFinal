@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     private PhysicsMaterial2D noFriction;
     private PhysicsMaterial2D normalFriction;
 
+    // Referência para o novo script de controle do vento
+    private WindController _windController;
+
     #region Variaveis - Pulo em contato com o chão e movimentação horizontal
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float jumpForce = 4f;
@@ -30,8 +33,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Variaveis - Controlar o pulo
-    bool jumpQueued; // Ao dar o pulo isso aqui fica zerado     
-    bool jumpPressed; // Usado para controlar altura do pulo segurando
+    public bool jumpQueued; // Ao dar o pulo isso aqui fica zerado      
+    public bool jumpPressed; // Usado para controlar altura do pulo segurando. TORNADO PUBLIC para WindController acessar
     [SerializeField] float jumpTimeValue = 0.2f; // tempo base para resetar o jumpTimeCurrent ao tocar o chão
     private float jumpTimeCurrent; // Tempo máximo que o player pode segurar o pulo
     private bool isJumping;
@@ -59,16 +62,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region Variaveis - Vento
-    [Header("Wind Settings")]
-    bool inWind = false;
-
-    public float normalGravity = 3f;
-    public float windGravity = 0.4f;        // ainda mais leve
-    public float windLiftForce = 120f;      // subida bem mais rápida
-    public float windMaxUpVelocity = 8f;    // limite de velocidade maior
-
-    #endregion
+    // A região do Vento foi movida para WindController.cs
 
     public float JumpForce
     {
@@ -86,7 +80,7 @@ public class Player : MonoBehaviour
         _playerRb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
         _playerAnimatorSprite = GetComponent<Animator>();
-
+        _windController = GetComponent<WindController>(); // Obter referência ao novo script
 
         noFriction = new PhysicsMaterial2D("NoFriction")
         {
@@ -126,7 +120,7 @@ public class Player : MonoBehaviour
         Move(); // Aplica velocidade com base no moveSpeed, vê se o player ta andando e chama o flipSprite
         Jump();
         HandleWallSlide();
-        ApplyWindControl();
+        // A chamada ApplyWindControl() foi movida para o FixedUpdate do WindController
     }
     void OnJump(InputValue inputValue)
     {
@@ -166,24 +160,7 @@ public class Player : MonoBehaviour
             FlipSprite();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Wind"))
-        {
-            inWind = true;
-            _playerRb.gravityScale = windGravity;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Wind"))
-        {
-            inWind = false;
-            _playerRb.gravityScale = normalGravity;
-        }
-    }
-
+    // OnTriggerEnter2D e OnTriggerExit2D foram movidos para WindController.cs
 
     void Jump()
     {
@@ -194,7 +171,7 @@ public class Player : MonoBehaviour
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
         // if(isGrounded)
-        //     extraJumps = 0;
+        //       extraJumps = 0;
 
         if (jumpQueued)
         {
@@ -255,14 +232,14 @@ public class Player : MonoBehaviour
 
         # region Gravidade - velocidade de subida e descida diferente
         // SÓ APLICA gravidade customizada se NÃO estiver no vento
-        if (!inWind)
+        if (!_windController.inWind) // Verifica o estado 'inWind' no script WindController
         {
             if (_playerRb.linearVelocity.y > 0 && jumpPressed)
                 _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
             else if (_playerRb.linearVelocity.y < 0)
                 _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
         }
-        #endregion
+        #endregion
 
     }
 
@@ -314,29 +291,4 @@ public class Player : MonoBehaviour
         wallJumping = false;
     }
 
-    void ApplyWindControl()
-    {
-        // Se não estamos no vento, não fazemos nada. 
-        // A gravidade já foi cuidada pelo OnTriggerExit2D.
-        if (!inWind)
-        {
-            return;
-        }
-
-        // Se estamos no vento (e a gravidade já está baixa):
-
-        // se segurar pulo, aplicar força para cima de forma contínua
-        if (jumpPressed) // O 'jumpPressed' vem do OnJump
-        {
-            // Usamos MoveTowards para "empurrar" suavemente a velocidade vertical
-            // para o nosso máximo (windMaxUpVelocity) na velocidade do "lift" (windLiftForce).
-            float newYVelocity = Mathf.MoveTowards(_playerRb.linearVelocity.y, windMaxUpVelocity, windLiftForce * Time.fixedDeltaTime);
-            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, newYVelocity);
-        }
-        // Se o 'jumpPressed' não estiver sendo segurado, não fazemos nada.
-        // O player simplesmente flutuará com a gravidade reduzida (windGravity),
-        // o que parece ser o comportamento que você quer.
-    }
-
 }
-
