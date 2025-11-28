@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
     #region Variaveis - Controlar a gravidade de pulo
     float jumpGravity = 0.3f; // quanto menor, mais lenta a subida
     float maxFallSpeed = -6f;
+
+    [Header("Gliding Settings")]
+    public bool isGliding = false; // Estado de planar (voo lento com guarda-chuva)
+    [SerializeField] float maxGlideFallSpeed = -2f; // Velocidade máxima de queda durante o planamento
     #endregion
 
     #region Variaveis - Controlar o pulo
@@ -62,8 +66,6 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    // A região do Vento foi movida para WindController.cs
-
     public float JumpForce
     {
         get => jumpForce;
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
         _playerRb = GetComponent<Rigidbody2D>();
         _playerCollider = GetComponent<BoxCollider2D>();
         _playerAnimatorSprite = GetComponent<Animator>();
-        _windController = GetComponent<WindController>(); // Obter referência ao novo script
+        _windController = GetComponent<WindController>(); // Obter referência ao script WindController
 
         noFriction = new PhysicsMaterial2D("NoFriction")
         {
@@ -108,20 +110,57 @@ public class Player : MonoBehaviour
         _playerAnimatorSprite.SetBool("IsSliding", isWallSliding);
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
         _playerAnimatorSprite.SetBool("IsFalling", isFalling);
+        _playerAnimatorSprite.SetBool("IsGliding", isGliding); // NOVO: Animação de Planar
 
 
         // Ajusta material para o player escorregar nas paredes
         _playerCollider.sharedMaterial = noFriction;
 
+        // Lógica de Planar (sem alteração, mantém a queda lenta)
+        if (isGrounded)
+        {
+            // Reseta o estado de planar ao tocar o chão
+            isGliding = false;
+            _playerRb.gravityScale = _windController.normalGravity; // Garante que a gravidade volte ao normal
+        }
+        else if (isGliding && !jumpPressed && !_windController.inWind)
+        {
+            // Se está planando fora do vento e soltou o botão, para de planar.
+            isGliding = false;
+            _playerRb.gravityScale = _windController.normalGravity;
+        }
+
         // Reseta a velocidade do personagem para maxFallSpeed caso ultrapasse esse valor
-        if (_playerRb.linearVelocity.y < maxFallSpeed)
-            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, maxFallSpeed);
+        // Usa maxGlideFallSpeed se estiver planando
+        float currentMaxFall = isGliding ? maxGlideFallSpeed : maxFallSpeed;
+        if (_playerRb.linearVelocity.y < currentMaxFall)
+            _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, currentMaxFall);
 
         Move(); // Aplica velocidade com base no moveSpeed, vê se o player ta andando e chama o flipSprite
         Jump();
         HandleWallSlide();
-        // A chamada ApplyWindControl() foi movida para o FixedUpdate do WindController
+        ApplyCustomGravity(); // NOVO: Chama a lógica de gravidade customizada
+        // ApplyWindControl() está no FixedUpdate do WindController
     }
+
+    // NOVO: Método para aplicar a gravidade customizada quando não está planando ou no vento
+    void ApplyCustomGravity()
+    {
+        // Se estiver no vento ou planando (fora do vento), a gravidade é controlada externamente ou pelo clamping de velocidade
+        if (_windController.inWind || isGliding)
+        {
+            return;
+        }
+
+        # region Gravidade - velocidade de subida e descida diferente (Original)
+        // SÓ APLICA gravidade customizada se NÃO estiver no vento ou planando
+        if (_playerRb.linearVelocity.y > 0 && jumpPressed)
+            _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
+        else if (_playerRb.linearVelocity.y < 0)
+            _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
+        #endregion
+    }
+
     void OnJump(InputValue inputValue)
     {
         // Enquanto eu estiver segurando o botão de espaço a variável fica True
@@ -200,6 +239,9 @@ public class Player : MonoBehaviour
                 return;
             }
 
+            // Removido o bloqueio do pulo no chão dentro do vento.
+            // O pulo normal agora ocorre, e o WindController assume imediatamente no FixedUpdate.
+
             bool canJump = isGrounded || extraJumps > 0;
 
             if (canJump)
@@ -230,17 +272,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        # region Gravidade - velocidade de subida e descida diferente
-        // SÓ APLICA gravidade customizada se NÃO estiver no vento
-        if (!_windController.inWind) // Verifica o estado 'inWind' no script WindController
-        {
-            if (_playerRb.linearVelocity.y > 0 && jumpPressed)
-                _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
-            else if (_playerRb.linearVelocity.y < 0)
-                _playerRb.linearVelocity += Vector2.up * Physics2D.gravity.y * (jumpGravity - 1) * Time.fixedDeltaTime;
-        }
-        #endregion
-
+        // A lógica de gravidade customizada foi movida para ApplyCustomGravity()
     }
 
     private void FlipSprite()
@@ -290,5 +322,4 @@ public class Player : MonoBehaviour
     {
         wallJumping = false;
     }
-
 }

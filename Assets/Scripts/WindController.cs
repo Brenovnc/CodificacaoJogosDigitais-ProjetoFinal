@@ -4,13 +4,13 @@ using UnityEngine;
 public class WindController : MonoBehaviour
 {
     private Rigidbody2D _playerRb;
-    private Player _player; // Referência ao Player para acessar jumpPressed
+    private Player _player; // Referência ao Player para acessar jumpPressed e isGliding
 
     #region Variaveis - Vento
     [Header("Wind Settings")]
-    public bool inWind = false; // PUBLIC para o Player acessar
+    public bool inWind = false; // TORNADO PUBLIC para o script Player acessar o estado
 
-    public float normalGravity = 3f;
+    public float normalGravity = 3f; // TORNADO PUBLIC para o Player.cs poder resetar a gravidade
     public float windGravity = 0.4f;        // ainda mais leve
     public float windLiftForce = 120f;      // subida bem mais rápida
     public float windMaxUpVelocity = 8f;    // limite de velocidade maior
@@ -21,6 +21,7 @@ public class WindController : MonoBehaviour
     {
         _playerRb = GetComponent<Rigidbody2D>();
         _player = GetComponent<Player>();
+        _playerRb.gravityScale = normalGravity; // Garante o valor inicial
     }
 
     void FixedUpdate()
@@ -33,6 +34,7 @@ public class WindController : MonoBehaviour
         if (other.CompareTag("Wind"))
         {
             inWind = true;
+            // A gravidade é reduzida ao entrar no vento
             _playerRb.gravityScale = windGravity;
         }
     }
@@ -42,31 +44,47 @@ public class WindController : MonoBehaviour
         if (other.CompareTag("Wind"))
         {
             inWind = false;
-            _playerRb.gravityScale = normalGravity;
+
+            // Se o player ESTIVER planando ao sair do vento,
+            // MANTEMOS a gravidade em windGravity (queda lenta).
+            // Se ele não estiver planando, a gravidade volta ao normal.
+            if (!_player.isGliding)
+            {
+                _playerRb.gravityScale = normalGravity;
+            }
         }
     }
 
+
     void ApplyWindControl()
     {
-        // Se não estamos no vento, não fazemos nada. 
-        // A gravidade já foi cuidada pelo OnTriggerExit2D.
         if (!inWind)
         {
             return;
         }
 
-        // Se estamos no vento (e a gravidade já está baixa):
-
-        // se segurar pulo, aplicar força para cima de forma contínua
-        if (_player.jumpPressed) // O 'jumpPressed' agora é acessado do script Player
+        // Se estamos no vento E o botão de pulo está pressionado:
+        if (_player.jumpPressed)
         {
-            // Usamos MoveTowards para "empurrar" suavemente a velocidade vertical
-            // para o nosso máximo (windMaxUpVelocity) na velocidade do "lift" (windLiftForce).
+            // Força a gravidade correta para o planar/vento
+            _playerRb.gravityScale = windGravity;
+
+            // 1. Ativa o estado de planar
+            _player.isGliding = true;
+
+            // 2. Aplica a força de subida no vento
+            // Usamos MoveTowards para limitar a velocidade máxima (windMaxUpVelocity)
             float newYVelocity = Mathf.MoveTowards(_playerRb.linearVelocity.y, windMaxUpVelocity, windLiftForce * Time.fixedDeltaTime);
             _playerRb.linearVelocity = new Vector2(_playerRb.linearVelocity.x, newYVelocity);
         }
-        // Se o 'jumpPressed' não estiver sendo segurado, não fazemos nada.
-        // O player simplesmente flutuará com a gravidade reduzida (windGravity),
-        // o que parece ser o comportamento que você quer.
+        else if (_player.isGliding)
+        {
+            // 3. Se soltou o botão DENTRO do vento, desativa o planar
+            _player.isGliding = false;
+
+            // NOVO: Se o player não está mais segurando o botão DENTRO do vento, 
+            // a gravidade deve voltar ao normal para que ele caia como se estivesse fora do vento.
+            _playerRb.gravityScale = normalGravity;
+        }
     }
 }

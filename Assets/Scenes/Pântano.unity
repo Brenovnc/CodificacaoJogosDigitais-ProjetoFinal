@@ -28381,6 +28381,7 @@ GameObject:
   - component: {fileID: 1738866680}
   - component: {fileID: 1738866679}
   - component: {fileID: 1738866688}
+  - component: {fileID: 1738866689}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -28426,6 +28427,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  isGliding: 0
+  maxGlideFallSpeed: -2
+  jumpQueued: 0
+  jumpPressed: 0
   jumpTimeValue: 0.2
   extraJumps: 0
   wallCheck: {fileID: 585227087}
@@ -28436,10 +28441,6 @@ MonoBehaviour:
   wallJumpTime: 0.15
   wallJumpForce: 6
   wallJumpHorizontal: 4
-  normalGravity: 2.5
-  windGravity: 0.6
-  windLiftForce: 13
-  windMaxUpVelocity: 10
   pauseController: {fileID: 771543011}
 --- !u!114 &1738866681
 MonoBehaviour:
@@ -28675,6 +28676,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerCollider: {fileID: 1738866684}
+--- !u!114 &1738866689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738866678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13add9e0a91aebe448ea696db925007e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindController
+  inWind: 0
+  normalGravity: 3
+  windGravity: 0.7
+  windLiftForce: 20
+  windMaxUpVelocity: 6
 --- !u!1 &1747548207
 GameObject:
   m_ObjectHideFlags: 0
