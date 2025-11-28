@@ -149,11 +149,6 @@ public class Player : MonoBehaviour
         pauseController.MenuDePausa();
     }
 
-    void OnInteract(InputValue inputValue)
-    {
-        print("o");
-    }
-
     void Move()
     {
         // Define a velocidade do player com base na direção do movimento (esquerda ou direita) e o moveSpeed
