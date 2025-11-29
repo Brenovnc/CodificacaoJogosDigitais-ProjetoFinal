@@ -43,6 +43,12 @@ public class GrappleVine : MonoBehaviour
 
     void Update()
     {
+        // --- CORREÇÃO: Bloqueia inputs de jogo se o menu de pausa estiver ativo ---
+        if (playerScript != null && playerScript.IsGamePaused)
+        {
+            return;
+        }
+        // -------------------------------------------------------------------------
 
         var kb = Keyboard.current;
 
@@ -172,5 +178,4 @@ public class GrappleVine : MonoBehaviour
         joint.enabled = false;
         vine.enabled = false;
     }
-
 }

@@ -173,8 +173,8 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 881695432}
+    m_SelectOnDown: {fileID: 934376385}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -182,7 +182,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.3019608, g: 0.99215686, b: 0.78039217, a: 1}
     m_PressedColor: {r: 0.53333336, g: 0.80784315, b: 1, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.3019608, g: 0.9921569, b: 0.7803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -12914,6 +12914,7 @@ GameObject:
   - component: {fileID: 156740348}
   - component: {fileID: 156740347}
   - component: {fileID: 156740355}
+  - component: {fileID: 156740356}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -12940,6 +12941,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  isGliding: 0
+  maxGlideFallSpeed: -2
+  jumpQueued: 0
+  jumpPressed: 0
   jumpTimeValue: 0.2
   extraJumps: 0
   wallCheck: {fileID: 1949826352}
@@ -12950,10 +12955,6 @@ MonoBehaviour:
   wallJumpTime: 0.15
   wallJumpForce: 6
   wallJumpHorizontal: 4
-  normalGravity: 3
-  windGravity: 0.6
-  windLiftForce: 13
-  windMaxUpVelocity: 10
   pauseController: {fileID: 771543011}
 --- !u!114 &156740348
 MonoBehaviour:
@@ -13195,6 +13196,23 @@ MonoBehaviour:
   vine: {fileID: 1152754982}
   swingForce: 700
   playerDrag: 1
+--- !u!114 &156740356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156740346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13add9e0a91aebe448ea696db925007e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindController
+  inWind: 0
+  normalGravity: 3
+  windGravity: 0.4
+  windLiftForce: 120
+  windMaxUpVelocity: 8
 --- !u!1 &174778761
 GameObject:
   m_ObjectHideFlags: 0
@@ -16622,6 +16640,8 @@ MonoBehaviour:
   container: {fileID: 1211558145}
   checkpoint: {fileID: 1826713905}
   player: {fileID: 156740353}
+  firstSelectedButton: {fileID: 881695430}
+  uiInputModuleObject: {fileID: 68425957}
 --- !u!1 &775014830
 GameObject:
   m_ObjectHideFlags: 0
@@ -17097,7 +17117,7 @@ MonoBehaviour:
     m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 3061314}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -17105,8 +17125,8 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.3019608, g: 0.99215686, b: 0.78039217, a: 1}
     m_PressedColor: {r: 0.53333336, g: 0.80784315, b: 1, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 0.3019608, g: 0.9921569, b: 0.7803922, a: 1}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -17507,7 +17527,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 3061314}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -17516,7 +17536,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.3019608, g: 0.99215686, b: 0.78039217, a: 1}
     m_PressedColor: {r: 0.53333336, g: 0.80784315, b: 1, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.3019608, g: 0.9921569, b: 0.7803922, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -27443,7 +27463,7 @@ SpriteRenderer:
   m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 945076387130869792, guid: 31ae94100636a7b4188cdd47c2561b9f, type: 3}
-  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2

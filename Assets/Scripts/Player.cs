@@ -74,6 +74,8 @@ public class Player : MonoBehaviour
 
     // Referência para o script do menu de pausa
     public PauseController pauseController;
+    private bool isPaused = false;
+    public bool IsGamePaused => isPaused;
 
     public bool CanMoveHorizontally { get; set; } = true;
 
@@ -177,9 +179,16 @@ public class Player : MonoBehaviour
 
     void OnPause()
     {
-        // A função só pode ser chamada caso o esc (vinculado ao Pause) seja apertado
-        // Como o input está vinculado ao player, precisamos chamar o onPause no player
-        pauseController.MenuDePausa();
+        if (!isPaused)
+        {
+            pauseController.MenuDePausa();
+            isPaused = true;
+        }
+        else
+        {
+            pauseController.VoltarAoJogo();
+            isPaused = false;
+        }
     }
 
     void Move()
