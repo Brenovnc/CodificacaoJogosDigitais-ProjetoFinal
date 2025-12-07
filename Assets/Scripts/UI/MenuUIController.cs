@@ -209,7 +209,7 @@ public class MenuUIController : MonoBehaviour
 
     private void CarregarFaseSelecionada()
     {
-        string sceneName = (faseSelecionada == 1) ? "Floresta" : "P�ntano";
+        string sceneName = (faseSelecionada == 1) ? "Floresta" : "Pantano";
         SceneManager.LoadScene(sceneName);
     }
 
