@@ -54,8 +54,8 @@ public class Death : MonoBehaviour
 
         // ⚠ desabilita o COLLIDER enquanto teleporta
         // evita o player colidir com o chão/espinho na hora
-        Collider2D playerCol = player.GetComponent<Collider2D>();
-        playerCol.enabled = false;
+        // Collider2D playerCol = player.GetComponent<Collider2D>();
+        // playerCol.enabled = false;
 
         // reseta dissolve
         playerMat.SetFloat(dissolveID, 0f);
@@ -64,11 +64,11 @@ public class Death : MonoBehaviour
         player.transform.position = checkpoint.position;
 
         // pequena espera para física estabilizar
-        yield return new WaitForFixedUpdate();
-        yield return new WaitForFixedUpdate();
+        // yield return new WaitForFixedUpdate();
+        // yield return new WaitForFixedUpdate();
 
         // agora ativa o collider
-        playerCol.enabled = true;
+        // playerCol.enabled = true;
 
         // reseta plataformas
         foreach (var plat in plataformas)
