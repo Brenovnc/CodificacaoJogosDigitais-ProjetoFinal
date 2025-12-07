@@ -4,27 +4,27 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using TMPro;
-using System.Collections; // Necessário para a coroutine, se você usá-la.
+using System.Collections; // Necessï¿½rio para a coroutine, se vocï¿½ usï¿½-la.
 
 public class MenuUIController : MonoBehaviour
 {
-    [Header("Painéis de Navegação")]
+    [Header("Painï¿½is de Navegaï¿½ï¿½o")]
     public GameObject MenuPrincipalPanel;
     public GameObject SelecaoFasePanel;
 
-    [Header("Visuais de Seleção (Ativação de GameObject)")]
+    [Header("Visuais de Seleï¿½ï¿½o (Ativaï¿½ï¿½o de GameObject)")]
     public GameObject FundoSelecaoFloresta;
     public GameObject FundoSelecaoPantano;
     public GameObject FundoSelecaoVoltar;
 
-    [Header("Botões e Foco")]
+    [Header("Botï¿½es e Foco")]
     public Button BotaoVoltar;
     public GameObject FlorestaSelect;
     public GameObject PantanoSelect;
     public Button BotaoJogar;
 
-    [Header("Textos de Botões (TMP)")]
-    // Apenas textos dos botões que precisam de estilização
+    [Header("Textos de Botï¿½es (TMP)")]
+    // Apenas textos dos botï¿½es que precisam de estilizaï¿½ï¿½o
     public TextMeshProUGUI JogarText;
     public TextMeshProUGUI EscolherFaseText;
     public TextMeshProUGUI SairText;
@@ -43,10 +43,10 @@ public class MenuUIController : MonoBehaviour
         estaEmVoltar = false;
         AtualizarVisuais();
 
-        // Garante o foco inicial após a inicialização
+        // Garante o foco inicial apï¿½s a inicializaï¿½ï¿½o
         if (BotaoJogar != null)
         {
-            // Boa prática: limpa o foco e define
+            // Boa prï¿½tica: limpa o foco e define
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(BotaoJogar.gameObject);
         }
@@ -81,14 +81,14 @@ public class MenuUIController : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(null);
 
-        // Usamos uma coroutine ou Invoke para garantir que a seleção ocorra no próximo frame
+        // Usamos uma coroutine ou Invoke para garantir que a seleï¿½ï¿½o ocorra no prï¿½ximo frame
         if (BotaoJogar != null)
         {
             StartCoroutine(SetInitialFocusAndStyleCoroutine());
         }
     }
 
-    // Mantenho esta coroutine para consistência e para resolver problemas de foco
+    // Mantenho esta coroutine para consistï¿½ncia e para resolver problemas de foco
     private IEnumerator SetInitialFocusAndStyleCoroutine()
     {
         yield return null; // Espera 1 frame
@@ -136,7 +136,7 @@ public class MenuUIController : MonoBehaviour
                     EventSystem.current.SetSelectedGameObject(FlorestaSelect.gameObject);
                 }
             }
-            // Não precisa de ApplyHighlightStyle aqui, pois não há textos para estilizar na seleção de fase.
+            // Nï¿½o precisa de ApplyHighlightStyle aqui, pois nï¿½o hï¿½ textos para estilizar na seleï¿½ï¿½o de fase.
         }
     }
 
@@ -162,7 +162,7 @@ public class MenuUIController : MonoBehaviour
                     estaEmVoltar = true;
                     AtualizarVisuais();
                     EventSystem.current.SetSelectedGameObject(BotaoVoltar.gameObject);
-                    ApplyHighlightStyle(); // Aplica estilo ao botão Voltar
+                    ApplyHighlightStyle(); // Aplica estilo ao botï¿½o Voltar
                 }
             }
             else if (value < 0) // S (Para baixo) -> VAI PARA FASES
@@ -173,7 +173,7 @@ public class MenuUIController : MonoBehaviour
                     AtualizarVisuais();
                     GameObject focusTarget = (faseSelecionada == 1) ? FlorestaSelect.gameObject : PantanoSelect.gameObject;
                     EventSystem.current.SetSelectedGameObject(focusTarget);
-                    ApplyHighlightStyle(); // Desfaz o estilo do botão Voltar
+                    ApplyHighlightStyle(); // Desfaz o estilo do botï¿½o Voltar
                 }
             }
         }
@@ -209,11 +209,11 @@ public class MenuUIController : MonoBehaviour
 
     private void CarregarFaseSelecionada()
     {
-        string sceneName = (faseSelecionada == 1) ? "Floresta" : "Pântano";
+        string sceneName = (faseSelecionada == 1) ? "Floresta" : "Pï¿½ntano";
         SceneManager.LoadScene(sceneName);
     }
 
-    // Método que cuida dos fundos visuais da seleção de fase
+    // Mï¿½todo que cuida dos fundos visuais da seleï¿½ï¿½o de fase
     private void AtualizarVisuais()
     {
         FundoSelecaoFloresta.SetActive(false);
@@ -237,16 +237,16 @@ public class MenuUIController : MonoBehaviour
         }
     }
 
-    // LÓGICA DE ESTILIZAÇÃO: Apenas cor e negrito, preservando a fonte.
+    // Lï¿½GICA DE ESTILIZAï¿½ï¿½O: Apenas cor e negrito, preservando a fonte.
     private void ApplyHighlightStyle()
     {
-        // Define todos os textos de botões que precisam de estilização
+        // Define todos os textos de botï¿½es que precisam de estilizaï¿½ï¿½o
         var menuTexts = new (TextMeshProUGUI text, GameObject gameObject)[]
         {
             (JogarText, BotaoJogar?.gameObject),
             (EscolherFaseText, EscolherFaseText?.GetComponentInParent<Button>()?.gameObject),
             (SairText, SairText?.GetComponentInParent<Button>()?.gameObject),
-            // O texto do botão Voltar (extraído do BotaoVoltar)
+            // O texto do botï¿½o Voltar (extraï¿½do do BotaoVoltar)
             (BotaoVoltar?.GetComponentInChildren<TextMeshProUGUI>(), BotaoVoltar?.gameObject)
         };
 
@@ -254,10 +254,10 @@ public class MenuUIController : MonoBehaviour
 
         foreach (var item in menuTexts)
         {
-            // Ignora se o TextComponent ou o GameObject não foi encontrado
+            // Ignora se o TextComponent ou o GameObject nï¿½o foi encontrado
             if (item.text == null || item.gameObject == null) continue;
 
-            // Verifica se o GameObject correspondente é o objeto atualmente selecionado
+            // Verifica se o GameObject correspondente ï¿½ o objeto atualmente selecionado
             if (item.gameObject == currentSelection)
             {
                 // Aplica o destaque: Cor + Negrito (usando OR bit a bit para adicionar o estilo)
@@ -266,15 +266,14 @@ public class MenuUIController : MonoBehaviour
             }
             else
             {
-                // Reseta: Cor Padrão + Remove Negrito (usando AND com a NEGAÇÃO bit a bit)
+                // Reseta: Cor Padrï¿½o + Remove Negrito (usando AND com a NEGAï¿½ï¿½O bit a bit)
                 item.text.color = DefaultColor;
                 item.text.fontStyle &= ~FontStyles.Bold;
             }
         }
 
-        // NOTA: A estilização dos textos Floresta e Pântano foi removida
+        // NOTA: A estilizaï¿½ï¿½o dos textos Floresta e Pï¿½ntano foi removida
     }
-
     public void ExitGame()
     {
         Application.Quit();

@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     private float jumpTimeCurrent; // Tempo máximo que o player pode segurar o pulo
     private bool isJumping;
     private bool isFalling;
+    private bool isDying;
 
     // Double jump
     private int extraJumpsValue = 1;
@@ -76,7 +77,6 @@ public class Player : MonoBehaviour
     public PauseController pauseController;
     private bool isPaused = false;
     public bool IsGamePaused => isPaused;
-
     public bool CanMoveHorizontally { get; set; } = true;
 
     void Awake()
@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
         _playerAnimatorSprite.SetBool("IsFalling", isFalling);
         _playerAnimatorSprite.SetBool("IsGliding", isGliding); // NOVO: Animação de Planar
+        _playerAnimatorSprite.SetBool("IsGliding", isDying);
 
 
         // Ajusta material para o player escorregar nas paredes

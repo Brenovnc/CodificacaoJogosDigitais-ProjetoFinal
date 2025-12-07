@@ -9,7 +9,7 @@ public class PlataformaMovel : MonoBehaviour
 
     void Start()
     {
-        transform.position = pontos[1].position;
+        transform.position = pontos[0].position;
     }
     void Update()
     {
@@ -40,5 +40,10 @@ public class PlataformaMovel : MonoBehaviour
             collision.transform.SetParent(null);
         }
     }
+    public void ResetPlataforma()
+{
+    i = 0;
+    transform.position = pontos[0].position;
+}
 }
 

@@ -4,32 +4,20 @@ using System.Collections;
 public class Dicas : MonoBehaviour
 {
     [SerializeField] private GameObject elementoCanvas;
-    [SerializeField] private float duracaoAtivacao = 3f;
-    private bool estaMostrando = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !estaMostrando)
-        {
-            StartCoroutine(AtivarElementoPorTempo());
-        }
-    }
-
-    private IEnumerator AtivarElementoPorTempo()
-    {
-        estaMostrando = true;
-
-        if (elementoCanvas != null)
+        if (other.CompareTag("Player"))
         {
             elementoCanvas.SetActive(true);
         }
+    }
 
-        yield return new WaitForSeconds(duracaoAtivacao);
-
-        if (elementoCanvas != null)
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
         {
             elementoCanvas.SetActive(false);
         }
-        //estaMostrando = false;
     }
 }
