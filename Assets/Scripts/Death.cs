@@ -71,8 +71,8 @@ public class Death : MonoBehaviour
         playerCol.enabled = true;
 
         // reseta plataformas
-        foreach (var p in plataformas)
-            p.ResetPlataforma();
+        foreach (var plat in plataformas)
+            plat.ResetPlataforma();
 
         player.CanMoveHorizontally = true;
         isRespawning = false;

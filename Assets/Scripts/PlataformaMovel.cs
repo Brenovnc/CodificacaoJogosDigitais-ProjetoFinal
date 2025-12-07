@@ -41,9 +41,9 @@ public class PlataformaMovel : MonoBehaviour
         }
     }
     public void ResetPlataforma()
-{
-    i = 0;
-    transform.position = pontos[0].position;
-}
+    {
+        i = 0;
+        transform.position = pontos[0].position;
+    }
 }
 

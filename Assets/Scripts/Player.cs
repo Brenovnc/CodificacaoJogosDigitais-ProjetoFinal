@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
         _playerAnimatorSprite.SetBool("IsFalling", isFalling);
         _playerAnimatorSprite.SetBool("IsGliding", isGliding); // NOVO: Animação de Planar
-        _playerAnimatorSprite.SetBool("IsGliding", isDying);
+        _playerAnimatorSprite.SetBool("IsDying", isDying);
 
 
         // Ajusta material para o player escorregar nas paredes
