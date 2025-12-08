@@ -194,29 +194,22 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        // Define a velocidade do player com base na direção do movimento (esquerda ou direita) e o moveSpeed
         if (!CanMoveHorizontally || wallJumping)
-            return; // SE NÃO PODE MOVER, SAI DA FUNÇÃO.
+            return;
 
-        // Antigo código de Move()
         _playerRb.linearVelocityX = xDir * moveSpeed;
 
-        // Math.Epsilon é a menor representação possível de um valor que não seja zero que o float pode representar
-        // Aqui eu vejo se o player está andando, independente do lado
         bool IsWalking = Mathf.Abs(_playerRb.linearVelocity.x) > Mathf.Epsilon;
 
         if (IsWalking)
             FlipSprite();
     }
 
-    // OnTriggerEnter2D e OnTriggerExit2D foram movidos para WindController.cs
-
     void Jump()
     {
         if (_playerRb.linearVelocity.y < 0)
             isJumping = false;
 
-        // Transiciona entre as blend tree Movimento e Pulando
         _playerAnimatorSprite.SetBool("IsJumping", isJumping);
 
         // if(isGrounded)

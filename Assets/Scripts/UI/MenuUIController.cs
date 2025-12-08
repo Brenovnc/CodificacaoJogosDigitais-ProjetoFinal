@@ -4,11 +4,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using TMPro;
-using System.Collections; // Necess�rio para a coroutine, se voc� us�-la.
+using System.Collections;
 
 public class MenuUIController : MonoBehaviour
 {
-    [Header("Pain�is de Navega��o")]
+    [Header("Paineis de Navegacao")]
     public GameObject MenuPrincipalPanel;
     public GameObject SelecaoFasePanel;
 
@@ -24,7 +24,6 @@ public class MenuUIController : MonoBehaviour
     public Button BotaoJogar;
 
     [Header("Textos de Bot�es (TMP)")]
-    // Apenas textos dos bot�es que precisam de estiliza��o
     public TextMeshProUGUI JogarText;
     public TextMeshProUGUI EscolherFaseText;
     public TextMeshProUGUI SairText;
@@ -43,10 +42,8 @@ public class MenuUIController : MonoBehaviour
         estaEmVoltar = false;
         AtualizarVisuais();
 
-        // Garante o foco inicial ap�s a inicializa��o
         if (BotaoJogar != null)
         {
-            // Boa pr�tica: limpa o foco e define
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(BotaoJogar.gameObject);
         }
@@ -67,10 +64,7 @@ public class MenuUIController : MonoBehaviour
         estaEmVoltar = false;
         AtualizarVisuais();
 
-        // Define o foco inicial na fase Floresta
         EventSystem.current.SetSelectedGameObject(FlorestaSelect.gameObject);
-
-        // Aplica o estilo do Voltar, caso tenha sido selecionado
         ApplyHighlightStyle();
     }
 
@@ -81,17 +75,15 @@ public class MenuUIController : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(null);
 
-        // Usamos uma coroutine ou Invoke para garantir que a sele��o ocorra no pr�ximo frame
         if (BotaoJogar != null)
         {
             StartCoroutine(SetInitialFocusAndStyleCoroutine());
         }
     }
 
-    // Mantenho esta coroutine para consist�ncia e para resolver problemas de foco
     private IEnumerator SetInitialFocusAndStyleCoroutine()
     {
-        yield return null; // Espera 1 frame
+        yield return null;
 
         if (BotaoJogar != null && EventSystem.current != null)
         {
@@ -136,7 +128,6 @@ public class MenuUIController : MonoBehaviour
                     EventSystem.current.SetSelectedGameObject(FlorestaSelect.gameObject);
                 }
             }
-            // N�o precisa de ApplyHighlightStyle aqui, pois n�o h� textos para estilizar na sele��o de fase.
         }
     }
 
@@ -144,7 +135,6 @@ public class MenuUIController : MonoBehaviour
     {
         if (!context.performed) return;
 
-        // Se estiver no Menu Principal, apenas atualiza o estilo com base no foco
         if (MenuPrincipalPanel.activeSelf)
         {
             ApplyHighlightStyle();
@@ -162,7 +152,7 @@ public class MenuUIController : MonoBehaviour
                     estaEmVoltar = true;
                     AtualizarVisuais();
                     EventSystem.current.SetSelectedGameObject(BotaoVoltar.gameObject);
-                    ApplyHighlightStyle(); // Aplica estilo ao bot�o Voltar
+                    ApplyHighlightStyle();
                 }
             }
             else if (value < 0) // S (Para baixo) -> VAI PARA FASES
@@ -173,7 +163,7 @@ public class MenuUIController : MonoBehaviour
                     AtualizarVisuais();
                     GameObject focusTarget = (faseSelecionada == 1) ? FlorestaSelect.gameObject : PantanoSelect.gameObject;
                     EventSystem.current.SetSelectedGameObject(focusTarget);
-                    ApplyHighlightStyle(); // Desfaz o estilo do bot�o Voltar
+                    ApplyHighlightStyle();
                 }
             }
         }
@@ -277,5 +267,10 @@ public class MenuUIController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void Continuar()
+    {
+        SceneManager.LoadScene("MenuPrincipal");
     }
 }
