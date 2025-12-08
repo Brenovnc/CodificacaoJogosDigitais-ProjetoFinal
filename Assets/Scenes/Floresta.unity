@@ -26283,7 +26283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pressione E para interagir
+  m_text: Pressione E para interagir.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -62996,12 +62996,12 @@ MonoBehaviour:
   - "Eai, humano? Veio terminar o que come\xE7ou?"
   - "Voc\xEA deve ter percebido o estado dessa floresta... Ta tudo sendo consumido
     pelo fogo e pelo lixo!"
-  - "N\xE3o sei qual seu intuito vindo at\xE9 aqui, mas espero que n\xE3o seja o
-    mesmo que todos os outros da sua esp\xE9cie que vieram antes de voc\xEA."
-  - "Se quiser atravessar vai precisar da minha ajuda. Ta vendo aqueles rastros ali
-    na frente? Tenta imitar o que eu fa\xE7o que vc passa. \xC9 s\xF3 saltar no ar."
+  - "Voc\xEA n\xE3o veio aqui para causar mais destrui\xE7\xE3o?"
+  - "Bom... ent\xE3o... se quiser atravessar vai precisar da minha ajuda. T\xE1 vendo
+    aquelas pegadas ali na frente? Tenta imitar o que eu fa\xE7o que voc\xEA vai
+    conseguir atravessar. \xC9 s\xF3 saltar no ar."
   - "Muito dif\xEDcil acreditar que os mesmos que destru\xEDram o nosso lar iriam
-    nos ajudar, mas que outra alternativa a gente tem? "
+    nos ajudar... enfim... que outra alternativa temos?"
   - "V\xE1 em frente humano, n\xE3o vou te atrapalhar."
   wordSpeed: 0.06
   tvFrames:
